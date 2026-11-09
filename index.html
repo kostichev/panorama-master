@@ -167,6 +167,30 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   .bolt.br{display:none}
 }
 
+/* ============ БЫСТРАЯ ЗАПИСЬ ============ */
+.quick{max-width:580px;margin-bottom:30px}
+.quick-row{display:flex;gap:8px;padding:8px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+.quick-row input{flex:1;min-width:0;min-height:56px;padding:0 16px;border:0;border-radius:12px;background:transparent;color:#fff;font:inherit;font-size:19px;font-weight:600;letter-spacing:.02em}
+.quick-row input::placeholder{color:rgba(255,255,255,.45)}
+.quick-row input:focus{outline:none;background:rgba(255,255,255,.05)}
+.quick-row:focus-within{border-color:var(--orange)}
+.quick .consent{margin-top:12px}
+.quick-note{font-size:14px;color:var(--dim);margin-top:6px}
+.quick-note a{color:#fff;font-weight:700;white-space:nowrap}
+.quick-done{display:flex;gap:16px;align-items:center;padding:18px 20px;border-radius:18px;background:rgba(232,116,59,.12);border:1px solid rgba(232,116,59,.5);max-width:580px;margin-bottom:30px}
+.quick-done .ok{flex-shrink:0;width:52px;height:52px;border-radius:50%;border:2px solid var(--orange);display:grid;place-items:center;color:var(--orange)}
+.quick-done .ok svg{width:26px}
+.quick-done b{display:block;font-size:18px}
+.quick-done span{color:var(--muted);font-size:15px}
+@media (max-width:520px){.quick-row{flex-direction:column}.quick-row .btn{width:100%}}
+
+/* модальное окно записи */
+.modal{border:0;padding:0;background:transparent;color:inherit;width:calc(100% - 32px);max-width:440px;margin:auto}
+.modal::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(4px)}
+.modal .card-form{border-color:rgba(232,116,59,.45);box-shadow:0 40px 80px -30px rgba(232,116,59,.4)}
+.modal .x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;font-size:26px;color:var(--dim)}
+.modal .x:hover{color:#fff}
+
 /* ============ БРЕНДОВАЯ ПЛАШКА-МАЗОК ============ */
 .brush-band{position:relative;margin-top:-48px;z-index:3}
 .brush{
@@ -274,6 +298,19 @@ section{position:relative}
 .opt input:checked+span{border-color:var(--orange);background:rgba(232,116,59,.1)}
 .opt input:checked+span::before{background:var(--orange);border-color:var(--orange);box-shadow:inset 0 0 0 3px var(--bg-3)}
 .opt input:focus-visible+span{outline:3px solid var(--orange);outline-offset:2px}
+.opts-big{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.opts-big .opt span{min-height:76px;padding:14px 18px}
+.opt i{display:flex;flex-direction:column;font-style:normal;line-height:1.3}
+.opt i b{font-size:16px}
+.opt i small{font-size:13px;font-weight:500;color:var(--dim);margin-top:2px}
+.sub{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line)}
+.sub[hidden]{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid rgba(255,255,255,.14);font-weight:600;font-size:15px;cursor:pointer;transition:all .2s}
+.chip:hover span{border-color:rgba(232,116,59,.5)}
+.chip input:checked+span{border-color:var(--orange);background:rgba(232,116,59,.14);color:#fff}
+.chip input:focus-visible+span{outline:3px solid var(--orange);outline-offset:2px}
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .field label{font-size:14px;font-weight:600;color:var(--muted)}
 .field input,.field textarea,.field select{
@@ -389,10 +426,18 @@ section{position:relative}
 .msg a{flex:1;min-width:130px;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;font-weight:700;font-size:15px;border:2px solid var(--line);transition:border-color .2s}
 .msg a:hover{border-color:var(--orange)}
 .msg svg{width:20px;height:20px}
-.map{border-radius:22px;overflow:hidden;min-height:440px;border:1px solid var(--line);position:relative;background:#222}
+.map{border-radius:22px;overflow:hidden;min-height:440px;border:1px solid rgba(232,116,59,.45);position:relative;background:#1A1919;box-shadow:0 30px 70px -40px rgba(232,116,59,.5)}
 .map::before{content:"Яндекс Карта · Соболиха, ул. Новослободская, 50";position:absolute;inset:0;display:grid;place-items:center;color:var(--dim);font-size:14px}
-.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.05)}
-.map .btn{position:absolute;left:16px;bottom:16px;z-index:2}
+/* тёмная карта в цветах сайта: инверсия + возврат оттенков + оранжевое тонирование */
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:0;filter:invert(.92) hue-rotate(180deg) saturate(.55) brightness(.9) contrast(1.1)}
+.map .tint{position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--orange);mix-blend-mode:color;opacity:.28}
+.map .vignette{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 40%,rgba(18,18,18,.75) 100%),linear-gradient(180deg,rgba(18,18,18,.55),transparent 22%,transparent 70%,rgba(18,18,18,.7))}
+.map-card{position:absolute;top:16px;left:16px;z-index:2;display:flex;gap:12px;align-items:center;padding:12px 16px 12px 12px;border-radius:14px;background:rgba(18,18,18,.86);border:1px solid rgba(232,116,59,.4);backdrop-filter:blur(8px);max-width:calc(100% - 32px)}
+.map-card svg{height:40px;width:auto;flex-shrink:0}
+.map-card b{display:block;font-size:14px}
+.map-card small{display:block;font-size:12px;color:var(--dim);line-height:1.35}
+.map .bolt-m{position:absolute;right:-20px;top:22px;width:160px;height:8px;background:var(--orange);transform:skewX(-40deg) rotate(-20deg);z-index:2;pointer-events:none}
+.map .btn{position:absolute;left:16px;bottom:16px;z-index:3}
 @media (max-width:900px){.contacts{grid-template-columns:1fr}.map{min-height:340px}}
 
 /* ============ FOOTER ============ */
@@ -503,7 +548,7 @@ section{position:relative}
       <b>+7 (901) 711-04-11</b>
       <small><i></i>Ежедневно 09:00–21:00</small>
     </a>
-    <a href="#quiz" class="btn btn-primary">Записаться</a>
+    <a href="#book" class="btn btn-primary" data-book>Записаться</a>
   </div>
 </header>
 
@@ -595,10 +640,16 @@ section{position:relative}
       <span class="eyebrow">Автосервис «Панорама Мастер»</span>
       <h1 id="h1" class="h-display">Ремонт ГАЗели, Портера <span class="l2">и Транспортера</span><span class="sr"> в Балашихе</span></h1>
       <p class="lead">Ремонт всех легковых и легкого коммерческого транспорта. Машина стоит — бизнес теряет деньги. Найдём причину, согласуем цену и&nbsp;вернём машину на линию как можно быстрее.</p>
-      <div class="hero-ctas">
-        <a href="#quiz" class="btn btn-primary" data-goal="quiz_start"><svg><use href="#i-cal"/></svg>Записаться на ремонт</a>
-        <a href="tel:+79017110411" class="btn btn-ghost" data-goal="click_phone"><svg><use href="#i-phone"/></svg>Позвонить</a>
-      </div>
+      <form class="quick js-book" id="quickHero" novalidate>
+        <div class="quick-row">
+          <label class="sr" for="qh-phone">Телефон</label>
+          <input id="qh-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask>
+          <button class="btn btn-primary" type="submit"><svg><use href="#i-cal"/></svg>Записаться</button>
+        </div>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен на обработку <a href="#privacy">персональных данных</a></span></label>
+        <p class="quick-note">Оставьте номер — мастер перезвонит и подберёт удобное время. Или звоните сами: <a href="tel:+79017110411" data-goal="click_phone">+7 (901) 711-04-11</a></p>
+      </form>
       <div class="badges">
         <span class="badge"><span class="ic"><svg><use href="#i-clock"/></svg></span>09:00–21:00 без выходных</span>
         <span class="badge"><span class="ic"><svg><use href="#i-pin"/></svg></span>Соболиха / Железнодорожный</span>
@@ -698,13 +749,21 @@ section{position:relative}
         <fieldset class="step active" data-step="1">
           <legend class="sr">Шаг 1</legend>
           <div class="step-label">Шаг 1 из 4</div>
-          <h3>Какая у вас машина?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="model" value="ГАЗель"><span>ГАЗель</span></label>
-            <label class="opt"><input type="radio" name="model" value="Hyundai Porter"><span>Hyundai Porter</span></label>
-            <label class="opt"><input type="radio" name="model" value="VW Transporter"><span>VW Transporter</span></label>
-            <label class="opt"><input type="radio" name="model" value="Другой коммерческий"><span>Другой коммерческий</span></label>
-            <label class="opt"><input type="radio" name="model" value="Легковой"><span>Легковой автомобиль</span></label>
+          <h3>Какой у вас транспорт?</h3>
+          <div class="opts opts-big">
+            <label class="opt"><input type="radio" name="type" value="Коммерческий транспорт"><span><i><b>Коммерческий транспорт</b><small>ГАЗель, Портер, Транспортер, фургоны</small></i></span></label>
+            <label class="opt"><input type="radio" name="type" value="Легковой автомобиль"><span><i><b>Легковой автомобиль</b><small>Любые марки</small></i></span></label>
+            <label class="opt"><input type="radio" name="type" value="Микроавтобус"><span><i><b>Микроавтобус</b><small>Пассажирский транспорт</small></i></span></label>
+            <label class="opt"><input type="radio" name="type" value="Другое"><span><i><b>Другое / не знаю</b><small>Подскажем по телефону</small></i></span></label>
+          </div>
+          <div class="sub" id="subModel" hidden>
+            <div class="step-label">Уточните модель — необязательно</div>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="model" value="ГАЗель"><span>ГАЗель</span></label>
+              <label class="chip"><input type="radio" name="model" value="Hyundai Porter"><span>Hyundai Porter</span></label>
+              <label class="chip"><input type="radio" name="model" value="VW Transporter"><span>VW Transporter</span></label>
+              <label class="chip"><input type="radio" name="model" value="Другая"><span>Другая</span></label>
+            </div>
           </div>
         </fieldset>
 
@@ -781,7 +840,7 @@ section{position:relative}
       <div><div class="num"><span class="ph" style="font-size:20px">[N]</span></div><b>Гарантия на работы</b><p><span class="ph">[ЗАПОЛНИТЬ: срок гарантии на работы и запчасти]</span></p></div>
     </div>
     <div class="money reveal">
-      <p>Каждый день простоя ГАЗели — это <span class="accent">несделанные рейсы и потерянные деньги</span>. Поэтому мы работаем на скорость.</p>
+      <p>Каждый день простоя ГАЗели — это <span class="accent">несделанные рейсы и потерянные деньги</span>. Поэтому мы работаем на скорость и качество.</p>
       <a href="tel:+79017110411" class="btn btn-primary" data-goal="click_phone"><svg><use href="#i-phone"/></svg>Позвонить мастеру</a>
     </div>
   </div>
@@ -895,6 +954,13 @@ section{position:relative}
       <div class="map reveal">
         <iframe title="Карта: Панорама Мастер, Соболиха, Новослободская 50" loading="lazy"
           src="https://yandex.ru/map-widget/v1/?text=%D0%91%D0%B0%D0%BB%D0%B0%D1%88%D0%B8%D1%85%D0%B0%2C%20%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BD%D1%8F%20%D0%A1%D0%BE%D0%B1%D0%BE%D0%BB%D0%B8%D1%85%D0%B0%2C%20%D1%83%D0%BB.%20%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%BB%D0%BE%D0%B1%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%2C%2050&z=15"></iframe>
+        <span class="tint" aria-hidden="true"></span>
+        <span class="vignette" aria-hidden="true"></span>
+        <span class="bolt-m" aria-hidden="true"></span>
+        <div class="map-card">
+          <svg viewBox="0 0 220 96" aria-hidden="true"><path d="M14 10h192l-8 54H22z" fill="#1A1919" stroke="#E8743B" stroke-width="4"/><text x="110" y="30" text-anchor="middle" font-family="Exo 2,Arial Black" font-style="italic" font-weight="900" font-size="18" fill="#fff">ПАНОРАМА</text><text x="110" y="58" text-anchor="middle" font-family="Exo 2,Arial Black" font-style="italic" font-weight="900" font-size="31" fill="url(#lg-m)">МАСТЕР</text><use href="#i-gear" x="80" y="62" width="60" height="34" color="#E8743B"/></svg>
+          <div><b>Соболиха, ул. Новослободская, 50</b><small>Ежедневно 09:00–21:00</small></div>
+        </div>
         <a class="btn btn-primary" target="_blank" rel="noopener" data-goal="click_route"
           href="https://yandex.ru/maps/?rtext=~%D0%91%D0%B0%D0%BB%D0%B0%D1%88%D0%B8%D1%85%D0%B0%2C%20%D0%A1%D0%BE%D0%B1%D0%BE%D0%BB%D0%B8%D1%85%D0%B0%2C%20%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%BB%D0%BE%D0%B1%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%2050&rtt=auto"><svg><use href="#i-route"/></svg>Построить маршрут</a>
       </div>
@@ -910,7 +976,7 @@ section{position:relative}
     <div class="f-top">
       <a href="#top" class="logo" aria-label="Панорама Мастер"><svg viewBox="0 0 220 96" style="height:64px"><path d="M14 10h192l-8 54H22z" fill="#1A1919" stroke="#E8743B" stroke-width="3"/><text x="110" y="30" text-anchor="middle" font-family="Exo 2,Arial Black" font-style="italic" font-weight="900" font-size="18" fill="#fff">ПАНОРАМА</text><text x="110" y="58" text-anchor="middle" font-family="Exo 2,Arial Black" font-style="italic" font-weight="900" font-size="31" fill="url(#lg-m)">МАСТЕР</text><use href="#i-gear" x="80" y="62" width="60" height="34" color="#E8743B"/></svg></a>
       <p style="color:var(--muted);max-width:44ch">Ремонт всех легковых и легкого коммерческого транспорта. Газель • Портер • Транспортер.</p>
-      <a href="#quiz" class="btn btn-primary">Записаться на ремонт</a>
+      <a href="#book" class="btn btn-primary" data-book>Записаться на ремонт</a>
     </div>
     <div class="f-info">
       <div><span class="c-ic"><svg><use href="#i-phone"/></svg></span><div><small>Телефон:</small><b class="big"><a href="tel:+79017110411" data-goal="click_phone">+7 (901) 711-04-11</a></b></div></div>
@@ -928,10 +994,23 @@ section{position:relative}
 <nav class="tabbar" aria-label="Быстрые действия">
   <a href="tel:+79017110411" data-goal="click_phone"><svg><use href="#i-phone"/></svg>Звонок</a>
   <a href="https://wa.me/79017110411" data-goal="click_whatsapp"><svg><use href="#i-wa"/></svg>WhatsApp</a>
-  <a href="#quiz" class="main" data-goal="quiz_start"><svg><use href="#i-cal"/></svg>Запись</a>
+  <a href="#book" class="main" data-book><svg><use href="#i-cal"/></svg>Запись</a>
   <a href="#" data-goal="click_telegram"><svg><use href="#i-tg"/></svg>Telegram</a>
   <a href="https://yandex.ru/maps/?rtext=~%D0%91%D0%B0%D0%BB%D0%B0%D1%88%D0%B8%D1%85%D0%B0%2C%20%D0%A1%D0%BE%D0%B1%D0%BE%D0%BB%D0%B8%D1%85%D0%B0%2C%20%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%BB%D0%BE%D0%B1%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%2050&rtt=auto" data-goal="click_route"><svg><use href="#i-route"/></svg>Маршрут</a>
 </nav>
+
+<dialog class="modal" id="bookModal" aria-labelledby="book-h">
+  <form class="card-form js-book" novalidate>
+    <button type="button" class="x" aria-label="Закрыть" data-close>×</button>
+    <h3 class="h3" id="book-h">Запись на ремонт</h3>
+    <p>Оставьте телефон — мастер перезвонит и подберёт удобное время.</p>
+    <div class="field"><label for="m-name">Имя</label><input id="m-name" name="name" autocomplete="given-name" placeholder="Как к вам обращаться"></div>
+    <div class="field"><label for="m-phone">Телефон *</label><input id="m-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен с <a href="#privacy">политикой обработки ПДн</a></span></label>
+    <button class="btn btn-primary" type="submit"><svg><use href="#i-cal"/></svg>Записаться</button>
+  </form>
+</dialog>
 
 <div class="cookie" id="cookie" role="dialog" aria-label="Cookie">
   Мы используем cookie и Яндекс Метрику, чтобы сайт работал удобнее. <a class="accent" href="#privacy">Подробнее</a>
@@ -999,9 +1078,10 @@ function sendLead(type, data){
     next.style.display = n===steps.length-1 ? 'none' : '';
     i = n;
   }
+  const sub = document.getElementById('subModel');
   function valid(n){
     const s = steps[n];
-    if (n===0 && !s.querySelector('input:checked')) return shake(s);
+    if (n===0 && !s.querySelector('input[name=type]:checked')) return shake(s);
     if (n===3){
       const ph = s.querySelector('[name=phone]'), pd = s.querySelector('[name=pd]');
       if (!phoneOk(ph.value)){ ph.focus(); ph.setCustomValidity('Введите телефон'); ph.reportValidity(); ph.setCustomValidity(''); return false; }
@@ -1013,13 +1093,19 @@ function sendLead(type, data){
 
   form.addEventListener('change', e=>{
     if(!started){ started=true; goal('quiz_start'); }
-    if (e.target.name==='model') setTimeout(()=>{ if(i===0) show(1); }, 220); // авто-переход
+    // шаг 1: тип транспорта; для коммерческого — необязательное уточнение модели
+    if (e.target.name==='type'){
+      const commercial = e.target.value==='Коммерческий транспорт';
+      sub.hidden = !commercial;
+      if (!commercial){ form.querySelectorAll('input[name=model]').forEach(r=>r.checked=false); setTimeout(()=>{ if(i===0) show(1); }, 220); }
+    }
+    if (e.target.name==='model') setTimeout(()=>{ if(i===0) show(1); }, 220);
   });
   next.addEventListener('click', ()=>{
     if (!valid(i)) return;
     if (i===3){
       const fd = new FormData(form);
-      sendLead('quiz', {model:fd.get('model'), work:fd.getAll('work'), sympt:fd.getAll('sympt'), comment:fd.get('comment'), name:fd.get('name'), phone:fd.get('phone'), website:fd.get('website')});
+      sendLead('quiz', {type:fd.get('type'), model:fd.get('model'), work:fd.getAll('work'), sympt:fd.getAll('sympt'), comment:fd.get('comment'), name:fd.get('name'), phone:fd.get('phone'), website:fd.get('website')});
       goal('quiz_complete'); goal('form_submit');
     }
     show(i+1);
@@ -1029,12 +1115,35 @@ function sendLead(type, data){
   // клик по карточке модели — предвыбор в квизе
   document.querySelectorAll('[data-model]').forEach(a=>a.addEventListener('click',()=>{
     const v = a.dataset.model;
-    const map = {'Коммерческий':'Другой коммерческий'};
-    const r = form.querySelector(`input[name=model][value="${map[v]||v}"]`);
-    if (r){ r.checked = true; started=true; goal('quiz_start'); show(1); }
+    const type = v==='Легковой' ? 'Легковой автомобиль' : 'Коммерческий транспорт';
+    form.querySelector(`input[name=type][value="${type}"]`).checked = true;
+    sub.hidden = type!=='Коммерческий транспорт';
+    const m = form.querySelector(`input[name=model][value="${v}"]`);
+    form.querySelectorAll('input[name=model]').forEach(r=>r.checked = r===m);
+    started=true; goal('quiz_start'); show(1);
   }));
   show(0);
 })();
+
+/* ===== Быстрая запись (главный экран + модальное окно) ===== */
+const OK_ICON = '<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+document.querySelectorAll('.js-book').forEach(f=>f.addEventListener('submit', e=>{
+  e.preventDefault();
+  const ph = f.querySelector('[name=phone]'), pd = f.querySelector('[name=pd]');
+  if (!phoneOk(ph.value)){ ph.focus(); ph.setCustomValidity('Введите номер телефона'); ph.reportValidity(); ph.setCustomValidity(''); return; }
+  if (!pd.checked){ pd.reportValidity(); return; }
+  sendLead('book', Object.fromEntries(new FormData(f)));
+  goal('book_submit'); goal('form_submit');
+  const done = `<div class="quick-done"><span class="ok">${OK_ICON}</span><div><b>Вы записаны!</b><span>Мастер перезвонит в ближайшее время и подберёт удобное время.</span></div></div>`;
+  if (f.closest('dialog')){ f.innerHTML = '<button type="button" class="x" aria-label="Закрыть" data-close>×</button>' + done; }
+  else { f.outerHTML = done; }
+}));
+const bookModal = document.getElementById('bookModal');
+document.addEventListener('click', e=>{
+  if (e.target.closest('[data-book]')){ e.preventDefault(); bookModal.showModal(); goal('book_open'); bookModal.querySelector('[name=phone]')?.focus(); }
+  if (e.target.closest('[data-close]')) bookModal.close();
+});
+bookModal.addEventListener('click', e=>{ if (e.target===bookModal) bookModal.close(); });
 
 /* ===== B2B-форма ===== */
 document.getElementById('b2bForm').addEventListener('submit', e=>{
