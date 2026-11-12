@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ремонт ГАЗели, Портера, Транспортера в Балашихе — «Панорама Мастер»</title>
-<meta name="description" content="Автосервис «Панорама Мастер» в Балашихе (Соболиха, рядом с Железнодорожным): диагностика, ТО, ремонт узлов и агрегатов ГАЗель, Hyundai Porter, VW Transporter и легковых. 09:00–21:00 без выходных. +7 (901) 711-04-11">
+<meta name="description" content="Автосервис «Панорама Мастер» в Балашихе (Соболиха, рядом с Железнодорожным): диагностика, ТО, ремонт узлов и агрегатов, подбор запчастей для ГАЗель, Hyundai Porter, VW Transporter и легковых. 09:00–21:00 без выходных. +7 (901) 711-04-11">
 <meta name="theme-color" content="#121212">
 <link rel="canonical" href="https://[ЗАПОЛНИТЬ-ДОМЕН]/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Автосервис «Панорама Мастер» — ремонт коммерческого транспорта в Балашихе">
 <meta property="og:description" content="ГАЗель, Портер, Транспортер и легковые. Диагностика, ТО, ремонт узлов и агрегатов. Без выходных 09:00–21:00.">
 <meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://kostichev.github.io/panorama-master/assets/img/vizitka.jpg">
+<meta property="og:image:width" content="1179"><meta property="og:image:height" content="653">
 <!-- В макете шрифты с CDN. В продакшене — self-host (woff2, subset кириллица) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +23,8 @@
   "@context": "https://schema.org",
   "@type": "AutoRepair",
   "name": "Автосервис «Панорама Мастер»",
-  "description": "Ремонт всех легковых и легкого коммерческого транспорта: ГАЗель, Hyundai Porter, VW Transporter. Диагностика, ТО, ремонт узлов и агрегатов.",
+  "description": "Ремонт всех легковых и легкого коммерческого транспорта: ГАЗель, Hyundai Porter, VW Transporter. Диагностика, ТО, ремонт узлов и агрегатов, подбор запчастей.",
+  "image": "https://kostichev.github.io/panorama-master/assets/img/vizitka.jpg",
   "telephone": "+7-901-711-04-11",
   "url": "https://[ЗАПОЛНИТЬ-ДОМЕН]/",
   "address": {
@@ -126,29 +129,51 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .h-phone small{font-size:12px;color:var(--dim)}
 .h-phone small i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#3BD16F;margin-right:6px;box-shadow:0 0 0 3px rgba(59,209,111,.2);font-style:normal}
 .header .btn{--h:46px;padding:0 20px;font-size:15px}
-@media (max-width:1080px){.nav{display:none}.h-phone{margin-left:auto}}
+.nav a,.h-phone b{white-space:nowrap}
+/* бургер-меню */
+.burger{display:none;width:46px;height:46px;border-radius:10px;border:1px solid rgba(255,255,255,.16);position:relative;flex-shrink:0}
+.burger span,.burger span::before,.burger span::after{position:absolute;height:2px;background:#fff;border-radius:2px;transition:transform .25s,top .25s,background .25s}
+.burger span{left:12px;right:12px;top:22px}
+.burger span::before,.burger span::after{content:"";left:0;right:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.header.open .burger span{background:transparent}
+.header.open .burger span::before{top:0;transform:rotate(45deg)}
+.header.open .burger span::after{top:0;transform:rotate(-45deg)}
+@media (max-width:1240px){
+  .burger{display:block}
+  .h-phone{margin-left:auto}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;padding:6px 20px 18px;background:rgba(18,18,18,.97);border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.5)}
+  .header.open .nav{display:flex}
+  .nav a{padding:15px 4px;font-size:18px;color:#fff;border-bottom:1px solid var(--line);border-radius:0}
+}
 @media (max-width:640px){.header .btn,.h-phone small{display:none}.h-phone b{font-size:16px}.logo svg{height:42px}.header .wrap{height:64px}}
 
 /* ============ HERO ============ */
 .hero{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid var(--line)}
 .hero-scene{position:absolute;inset:0;z-index:-2}
-.hero-scene svg{width:100%;height:100%;object-fit:cover}
-.hero::after{ /* затемнение слева для читаемости */
+.hero-scene img{width:100%;height:100%;object-fit:cover;filter:saturate(.8)}
+.hero::after{ /* затемнение фото цеха для читаемости */
   content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(90deg, rgba(18,18,18,.97) 0%, rgba(18,18,18,.88) 34%, rgba(18,18,18,.25) 62%, rgba(18,18,18,.1) 100%),
-             linear-gradient(0deg, var(--bg) 0%, transparent 22%);
+  background:radial-gradient(900px 500px at 78% 45%, rgba(232,116,59,.22), transparent 70%),
+             linear-gradient(90deg, rgba(18,18,18,.96) 0%, rgba(18,18,18,.88) 45%, rgba(18,18,18,.72) 100%),
+             linear-gradient(0deg, var(--bg) 0%, transparent 25%);
 }
-.hero .wrap{min-height:min(88vh,780px);display:flex;flex-direction:column;justify-content:center;padding-top:64px;padding-bottom:110px}
-.hero-content{max-width:700px}
-.hero h1{font-size:clamp(38px,5.2vw,70px);margin:6px 0 22px}
+.hero .wrap{min-height:min(88vh,780px);display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,4vw,56px);align-items:center;padding-top:56px;padding-bottom:110px}
+.hero-content{max-width:660px}
+.hero h1{font-size:clamp(36px,4.5vw,62px);margin:6px 0 22px}
 .hero h1 .l2{display:block;white-space:nowrap;background:linear-gradient(100deg,#FFB083,var(--orange) 40%,var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
 .hero .lead{margin-bottom:30px;max-width:54ch}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
 .badges{display:flex;flex-wrap:wrap;gap:10px}
 .badge{display:inline-flex;align-items:center;gap:10px;padding:9px 14px 9px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--muted);backdrop-filter:blur(8px)}
+a.badge:hover{border-color:var(--orange);color:#fff}
 .badge .ic{width:28px;height:28px;border-radius:50%;border:2px solid var(--orange);display:grid;place-items:center;color:var(--orange)}
 .badge .ic svg{width:14px;height:14px}
-.photo-note{position:absolute;right:20px;bottom:96px;font-size:12px;color:rgba(255,255,255,.6);background:rgba(0,0,0,.45);padding:6px 10px;border-radius:8px;border:1px dashed rgba(255,255,255,.25)}
+/* визитка — как карточка на столе */
+.hero-card{position:relative;margin:0;transform:rotate(-2.5deg);transition:transform .4s}
+.hero-card:hover{transform:rotate(0) scale(1.02)}
+.hero-card img{width:100%;height:auto;aspect-ratio:1179/653;border-radius:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08),0 0 80px -20px rgba(232,116,59,.55)}
+.hero-card::before{content:"";position:absolute;inset:-14px -14px auto auto;width:120px;height:10px;background:var(--orange);transform:skewX(-40deg);border-radius:2px;z-index:1}
+@media (prefers-reduced-motion:no-preference){.hero-card{animation:cardIn .9s cubic-bezier(.2,.8,.2,1) both .15s}@keyframes cardIn{from{opacity:0;transform:rotate(-8deg) translateY(30px)}}}
 /* полосы-молнии по углам */
 .bolt{position:absolute;pointer-events:none;z-index:-1}
 .bolt::before,.bolt::after{content:"";position:absolute;height:10px;background:var(--orange);transform:skewX(-40deg) rotate(-28deg);border-radius:2px}
@@ -159,10 +184,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .bolt.br::before{width:200px;top:20px;right:0;background:var(--red)}
 .bolt.br::after{width:110px;top:50px;right:30px;opacity:.6}
 @media (max-width:820px){
-  .hero-scene{bottom:auto;height:340px}
-  .hero::after{background:linear-gradient(180deg, rgba(18,18,18,.15) 0, rgba(18,18,18,.1) 200px, var(--bg) 340px)}
-  .hero .wrap{min-height:auto;padding-top:300px;padding-bottom:96px}
-  .photo-note{top:14px;bottom:auto;left:12px;right:auto;font-size:11px}
+  .hero::after{background:linear-gradient(180deg, rgba(18,18,18,.78), rgba(18,18,18,.9) 40%, var(--bg) 100%)}
+  .hero .wrap{grid-template-columns:1fr;min-height:auto;padding-top:24px;padding-bottom:96px;gap:26px}
+  .hero-card{order:-1;transform:rotate(-1.5deg);max-width:560px}
   .mock-flag{display:none}
   .bolt.br{display:none}
 }
@@ -440,22 +464,39 @@ section{position:relative}
 @media (max-width:980px){.steps{grid-template-columns:1fr 1fr}.steps li::after{display:none}}
 @media (max-width:520px){.steps{grid-template-columns:1fr}}
 
-/* ============ ГАЛЕРЕЯ / ДО-ПОСЛЕ ============ */
-.gallery{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:220px 220px;gap:14px}
-.g{border-radius:var(--radius);overflow:hidden;position:relative;background:
-   repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 12px,transparent 12px 24px),linear-gradient(160deg,#2a2321,#171515);
-   border:1px dashed rgba(255,255,255,.14);display:grid;place-items:center;text-align:center;color:var(--dim);font-size:14px;padding:16px}
-.g svg{width:34px;height:34px;color:var(--orange);margin:0 auto 8px;opacity:.8}
-.g.ba{grid-row:span 2;padding:0;border-style:solid}
-.ba-wrap{position:absolute;inset:0}
-.ba-pane{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-head);font-style:italic;font-weight:900;font-size:28px;text-transform:uppercase}
-.ba-before{background:repeating-linear-gradient(135deg,rgba(0,0,0,.25) 0 10px,transparent 10px 20px),linear-gradient(160deg,#4a3b30,#2b231e);color:rgba(255,255,255,.5)}
-.ba-after{background:radial-gradient(circle at 60% 40%,rgba(232,116,59,.35),transparent 60%),linear-gradient(160deg,#2b2b2e,#151517);color:#fff;clip-path:inset(0 0 0 50%)}
-.ba-line{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--orange);transform:translateX(-50%);pointer-events:none}
-.ba-line::after{content:"⟷";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:var(--orange);color:#1A0E07;display:grid;place-items:center;font-weight:900}
-.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize}
-.ba-cap{position:absolute;left:16px;bottom:14px;font-size:12px;background:rgba(0,0,0,.55);padding:5px 10px;border-radius:8px;color:#fff}
-@media (max-width:820px){.gallery{grid-template-columns:1fr 1fr;grid-template-rows:300px 180px 180px}.g.ba{grid-column:span 2;grid-row:auto}}
+/* ============ ЗАПЧАСТИ ============ */
+.parts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.parts-photo{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3}
+.parts-photo img{width:100%;height:100%;object-fit:cover}
+.parts-photo figcaption{position:absolute;left:14px;bottom:14px;font-size:13px;background:rgba(0,0,0,.6);padding:6px 12px;border-radius:8px;color:#fff;backdrop-filter:blur(6px)}
+.parts-list{list-style:none;display:grid;gap:14px;margin:26px 0}
+.parts-list li{display:flex;gap:14px;align-items:flex-start}
+.parts-list .ic{flex-shrink:0;width:46px;height:46px;border-radius:50%;border:2px solid var(--orange);display:grid;place-items:center;color:var(--orange)}
+.parts-list .ic svg{width:22px;height:22px}
+.parts-list b{display:block;font-size:17px}
+.parts-list span{color:var(--dim);font-size:15px}
+.parts .card-form{margin-top:18px}
+@media (min-width:901px){.parts > div:first-child{position:sticky;top:100px}}
+@media (max-width:900px){.parts{grid-template-columns:1fr}}
+
+/* ============ ГАЛЕРЕЯ ============ */
+.gallery{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:250px 250px;gap:14px}
+.g{border-radius:var(--radius);overflow:hidden;position:relative;border:1px solid var(--line);padding:0;cursor:zoom-in;background:#1A1919;text-align:left}
+.g picture,.g img{display:block;width:100%;height:100%}
+.g img{object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.g:hover img{transform:scale(1.05)}
+.g::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent 45%);pointer-events:none}
+.g-cap{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;font-size:14px;font-weight:600;color:#fff}
+.g.tall{grid-row:span 2}
+@media (max-width:820px){.gallery{grid-template-columns:1fr 1fr;grid-template-rows:340px 170px 170px}.g.tall{grid-column:span 2;grid-row:auto}}
+.lightbox{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);max-height:92vh;margin:auto;overflow:visible}
+.lightbox::backdrop{background:rgba(0,0,0,.88)}
+.lightbox img{display:block;max-width:min(1200px,94vw);max-height:82vh;width:auto;height:auto;border-radius:14px;margin:0 auto}
+.lightbox p{text-align:center;color:var(--muted);margin-top:12px;font-size:15px}
+.lightbox .lb-btn{position:fixed;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(18,18,18,.8);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:24px}
+.lightbox .lb-btn:hover{border-color:var(--orange);color:var(--orange)}
+.lightbox .lb-prev{left:16px}.lightbox .lb-next{right:16px}
+.lightbox .lb-close{position:fixed;top:16px;right:16px;width:48px;height:48px;border-radius:50%;background:rgba(18,18,18,.8);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:26px}
 
 /* ============ ОТЗЫВЫ ============ */
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -558,6 +599,10 @@ section{position:relative}
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".15"/><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.5 3 3 6-6.5"/></symbol>
     <symbol id="i-gear" viewBox="0 0 64 40"><g fill="currentColor"><path d="M2 14h17l-3 4H6zM62 14H45l3 4h10zM6 20h11l-2 3H9zM58 20H47l2 3h6z"/><path d="M32 6l3 .5.8 3.2 2.2 1 2.8-1.7 2.2 2.2-1.7 2.8 1 2.2 3.2.8.5 3-.5 3-3.2.8-1 2.2 1.7 2.8-2.2 2.2-2.8-1.7-2.2 1-.8 3.2-3 .5-3-.5-.8-3.2-2.2-1-2.8 1.7-2.2-2.2 1.7-2.8-1-2.2-3.2-.8L18 20l.5-3 3.2-.8 1-2.2-1.7-2.8 2.2-2.2 2.8 1.7 2.2-1 .8-3.2zm0 8.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11z"/></g></symbol>
+    <symbol id="i-gear-sm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></g></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></g></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></g></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/></g></symbol>
     <symbol id="i-truck" viewBox="0 0 64 40"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><rect x="3" y="6" width="36" height="24" rx="2"/><path d="M39 14h12l8 9v7H39z"/><circle cx="14" cy="32" r="4.5" fill="#1A1919"/><circle cx="50" cy="32" r="4.5" fill="#1A1919"/><path d="M44 15v7h12"/></g></symbol>
     <symbol id="i-van" viewBox="0 0 64 40"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><path d="M3 30V10a3 3 0 0 1 3-3h38c4 0 6 2 9 7l7 9v7z"/><path d="M10 13h10v7H10zM25 13h10v7H25zM40 13h6l5 7H40z"/><circle cx="15" cy="31" r="4.5" fill="#1A1919"/><circle cx="49" cy="31" r="4.5" fill="#1A1919"/></g></symbol>
     <symbol id="i-car" viewBox="0 0 64 40"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><path d="M4 29v-7c0-2 1-3 3-3.5L15 17l7-7c1-1 2-1.5 4-1.5h12c2 0 3 .5 4.5 2L49 17l8 1.5c2 .5 3 1.5 3 3.5v7z"/><path d="M19 17l5-5h8v5zM36 12h4l5 5h-9z"/><circle cx="16" cy="30" r="4.5" fill="#1A1919"/><circle cx="48" cy="30" r="4.5" fill="#1A1919"/></g></symbol>
@@ -582,7 +627,7 @@ section{position:relative}
   </defs>
 </svg>
 
-<span class="mock-flag">Макет · v0.2</span>
+<span class="mock-flag">Макет · v0.3</span>
 
 <!-- ================= HEADER ================= -->
 <header class="header">
@@ -600,9 +645,9 @@ section{position:relative}
         <use href="#i-gear" x="80" y="62" width="60" height="34" color="#E8743B"/>
       </svg>
     </a>
-    <nav class="nav" aria-label="Основное меню">
+    <nav class="nav" id="nav" aria-label="Основное меню">
       <a href="#services">Услуги</a>
-      <a href="#models">Марки</a>
+      <a href="#parts">Запчасти</a>
       <a href="#quiz">Расчёт цены</a>
       <a href="#b2b">Автопаркам</a>
       <a href="#why">О нас</a>
@@ -614,6 +659,7 @@ section{position:relative}
       <small><i class="js-dot"></i><span class="js-status">Ежедневно 09:00–21:00</span></small>
     </a>
     <a href="#book" class="btn btn-primary" data-book>Записаться</a>
+    <button type="button" class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span></button>
   </div>
 </header>
 
@@ -621,82 +667,7 @@ section{position:relative}
 
 <!-- ================= HERO ================= -->
 <section class="hero" aria-labelledby="h1">
-  <div class="hero-scene" aria-hidden="true">
-    <!-- Иллюстрация-заглушка: заменить на фото здания сервиса в закатном свете (AVIF/WebP, 2400px) -->
-    <svg viewBox="0 0 1600 800" preserveAspectRatio="xMaxYMid slice">
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#1B1416"/><stop offset=".35" stop-color="#4A2522"/>
-          <stop offset=".62" stop-color="#B8532E"/><stop offset=".8" stop-color="#F09A5E"/><stop offset="1" stop-color="#2A1A16"/>
-        </linearGradient>
-        <radialGradient id="sun" cx="1380" cy="470" r="420" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#FFD0A0" stop-opacity=".95"/><stop offset=".25" stop-color="#F49A5C" stop-opacity=".55"/><stop offset="1" stop-color="#E8743B" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="wall" x1="0" x2="1"><stop offset="0" stop-color="#151314"/><stop offset=".7" stop-color="#2B2223"/><stop offset="1" stop-color="#4A2E28"/></linearGradient>
-        <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2620"/><stop offset="1" stop-color="#121212"/></linearGradient>
-        <linearGradient id="door" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2223"/><stop offset="1" stop-color="#151213"/></linearGradient>
-        <linearGradient id="boxg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3EEE9"/><stop offset="1" stop-color="#B9B0AA"/></linearGradient>
-        <linearGradient id="vang" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#B8B4B4"/></linearGradient>
-        <pattern id="shutter" width="10" height="9" patternUnits="userSpaceOnUse"><path d="M0 8.5h10" stroke="#000" stroke-opacity=".35"/></pattern>
-      </defs>
-      <rect width="1600" height="800" fill="url(#sky)"/>
-      <rect width="1600" height="800" fill="url(#sun)"/>
-      <!-- деревья -->
-      <path d="M560 560 C580 470 610 430 640 440 C660 400 700 390 720 430 C760 410 790 440 800 480 L800 560Z M1450 560 C1460 470 1490 440 1520 450 C1540 420 1580 420 1600 450 L1600 560Z" fill="#1E1517" opacity=".85"/>
-      <!-- здание -->
-      <path d="M700 330 L1120 210 L1540 330 L1540 640 L700 640 Z" fill="url(#wall)"/>
-      <path d="M700 330 L1120 210 L1540 330" fill="none" stroke="#E8743B" stroke-width="5" opacity=".9"/>
-      <!-- вывеска на фасаде -->
-      <g transform="translate(1000 270)">
-        <path d="M0 0h240l-10 66H10z" fill="#141213" stroke="#E8743B" stroke-width="2.5"/>
-        <text x="120" y="24" text-anchor="middle" font-family="Exo 2,Arial Black" font-style="italic" font-weight="900" font-size="17" fill="#fff">ПАНОРАМА</text>
-        <text x="120" y="54" text-anchor="middle" font-family="Exo 2,Arial Black" font-style="italic" font-weight="900" font-size="28" fill="#E5333A">МАСТЕР</text>
-      </g>
-      <!-- ворота -->
-      <g stroke="#E8743B" stroke-width="5">
-        <rect x="760" y="420" width="200" height="220" fill="url(#door)"/>
-        <rect x="1020" y="420" width="200" height="220" fill="url(#door)"/>
-        <rect x="1280" y="420" width="200" height="220" fill="url(#door)"/>
-      </g>
-      <rect x="763" y="423" width="194" height="217" fill="url(#shutter)"/>
-      <rect x="1023" y="423" width="194" height="217" fill="url(#shutter)"/>
-      <rect x="1283" y="423" width="194" height="217" fill="url(#shutter)"/>
-      <!-- свет из ворот -->
-      <rect x="1290" y="560" width="180" height="80" fill="#F2A066" opacity=".25"/>
-      <!-- земля -->
-      <rect y="640" width="1600" height="160" fill="url(#ground)"/>
-      <path d="M0 640 H1600" stroke="#F09A5E" stroke-opacity=".35" stroke-width="2"/>
-
-      <!-- ГАЗель-фургон -->
-      <g transform="translate(790 476) scale(.85)">
-        <ellipse cx="190" cy="196" rx="210" ry="14" fill="#000" opacity=".45"/>
-        <rect x="0" y="0" width="270" height="160" rx="4" fill="url(#boxg)"/>
-        <path d="M270 70 v-12 q2 -14 20 -14 h48 q20 0 32 24 l26 44 v68 h-126z" fill="#C9262C"/>
-        <path d="M296 54 h40 q12 0 20 16 l14 28 h-74z" fill="#2B2C33"/>
-        <path d="M296 54 h18 l-10 44 h-8z" fill="#fff" opacity=".18"/>
-        <rect x="380" y="128" width="20" height="10" rx="2" fill="#FFE2B0"/>
-        <rect x="0" y="160" width="400" height="18" fill="#2A2525"/>
-        <g fill="#141414" stroke="#3a3a3a" stroke-width="5"><circle cx="72" cy="182" r="30"/><circle cx="335" cy="182" r="30"/></g>
-        <g fill="#9a9a9a"><circle cx="72" cy="182" r="11"/><circle cx="335" cy="182" r="11"/></g>
-      </g>
-      <!-- белый микроавтобус -->
-      <g transform="translate(1130 520) scale(.85)">
-        <ellipse cx="170" cy="146" rx="190" ry="12" fill="#000" opacity=".45"/>
-        <path d="M0 130 V18 q0 -18 22 -18 h228 q24 0 40 26 l40 58 v46z" fill="url(#vang)"/>
-        <path d="M20 22 h56 v42 h-56z M90 22 h56 v42 h-56z M160 22 h56 v42 h-56z M230 22 h26 q14 0 24 16 l20 28 h-70z" fill="#22252B"/>
-        <rect x="0" y="118" width="330" height="16" fill="#3A3636"/>
-        <g fill="#141414" stroke="#3a3a3a" stroke-width="5"><circle cx="64" cy="134" r="26"/><circle cx="270" cy="134" r="26"/></g>
-        <g fill="#9a9a9a"><circle cx="64" cy="134" r="9"/><circle cx="270" cy="134" r="9"/></g>
-      </g>
-      <!-- легковой -->
-      <g transform="translate(1395 566) scale(.85)">
-        <ellipse cx="110" cy="92" rx="130" ry="10" fill="#000" opacity=".45"/>
-        <path d="M0 84 v-28 q2 -14 20 -16 l40 -4 l36 -30 q8 -6 22 -6 h50 q18 0 30 16 l20 24 l22 4 q14 4 14 16 v24z" fill="#1F1F24"/>
-        <path d="M72 34 l28 -22 h30 v22z M138 12 h28 q10 0 18 12 l8 10 h-54z" fill="#3E4250"/>
-        <g fill="#0f0f0f" stroke="#3a3a3a" stroke-width="4"><circle cx="50" cy="86" r="20"/><circle cx="190" cy="86" r="20"/></g>
-      </g>
-    </svg>
-  </div>
+  <div class="hero-scene" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/tsekh-posty-640.webp 640w, assets/img/tsekh-posty.webp 1200w" sizes="100vw"><img src="assets/img/tsekh-posty.jpg" srcset="assets/img/tsekh-posty-640.jpg 640w, assets/img/tsekh-posty.jpg 1200w" sizes="100vw" alt="" fetchpriority="low"></picture></div>
   <span class="bolt tl" aria-hidden="true"></span>
   <span class="bolt br" aria-hidden="true"></span>
 
@@ -718,10 +689,11 @@ section{position:relative}
       <div class="badges">
         <span class="badge"><span class="ic"><svg><use href="#i-clock"/></svg></span>09:00–21:00 без выходных</span>
         <span class="badge"><span class="ic"><svg><use href="#i-pin"/></svg></span>Соболиха / Железнодорожный</span>
+        <a class="badge" href="#parts"><span class="ic"><svg><use href="#i-gear-sm"/></svg></span>Подбор запчастей</a>
       </div>
     </div>
+    <figure class="hero-card"><picture><source type="image/webp" srcset="assets/img/vizitka-640.webp 640w, assets/img/vizitka.webp 1200w" sizes="(max-width:820px) 100vw, 46vw"><img src="assets/img/vizitka.jpg" srcset="assets/img/vizitka-640.jpg 640w, assets/img/vizitka.jpg 1200w" sizes="(max-width:820px) 100vw, 46vw" alt="Визитка автосервиса «Панорама Мастер»: ремонт ГАЗель, Портер, Транспортер, легковых и коммерческих авто. Телефон +7 (901) 711-04-11, Соболиха, ул. Новослободская, 50, 09:00–21:00 без выходных" width="1179" height="653" fetchpriority="high"></picture></figure>
   </div>
-  <span class="photo-note">Иллюстрация → здесь будет фото вашего сервиса</span>
 </section>
 
 <!-- Фирменная плашка-мазок как на визитке -->
@@ -729,7 +701,7 @@ section{position:relative}
   <div class="wrap">
     <div class="brush" role="note">
       <svg class="gear" viewBox="0 0 64 40"><use href="#i-gear"/></svg>
-      <span>Диагностика</span><i class="dot"></i><span>ТО</span><i class="dot"></i><span>Ремонт узлов и агрегатов</span>
+      <span>Диагностика</span><i class="dot"></i><span>ТО</span><i class="dot"></i><span>Ремонт узлов и агрегатов</span><i class="dot"></i><span>Подбор запчастей</span>
     </div>
   </div>
 </div>
@@ -741,7 +713,7 @@ section{position:relative}
       <span class="eyebrow">Специализация</span>
       <h2 id="models-h" class="h2">Знаем коммерческий транспорт <span class="accent">до винтика</span></h2>
       <p class="spec-quote">«Специализируемся на обслуживании легкого коммерческого транспорта, но с радостью поможем и владельцам легковых авто»</p>
-      <p class="lead" style="margin-top:22px">Работаем с ГАЗелями, Hyundai Porter и Volkswagen Transporter — машинами, которые каждый день возят грузы и людей. Разбираемся в их типовых болячках и держим под них запчасти. <span class="ph">[ЗАПОЛНИТЬ: склад запчастей — да/нет]</span></p>
+      <p class="lead" style="margin-top:22px">Работаем с ГАЗелями, Hyundai Porter и Volkswagen Transporter — машинами, которые каждый день возят грузы и людей. Разбираемся в их типовых болячках и <a class="accent" href="#parts">подбираем запчасти</a> под каждую машину.</p>
     </div>
     <div class="models reveal">
       <a class="model" href="#quiz" data-model="ГАЗель">
@@ -788,6 +760,38 @@ section{position:relative}
       <article class="svc reveal"><div class="ic"><svg><use href="#i-brake"/></svg></div><h3 class="h3">Тормозная система</h3><p>Колодки, диски, барабаны, суппорты, прокачка и замена жидкости.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Тормозная система">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Тормозная система">Записаться</button></div></div></article>
       <article class="svc reveal"><div class="ic"><svg><use href="#i-bolt"/></svg></div><h3 class="h3">Автоэлектрика</h3><p>Генератор, стартер, проводка, свет, поиск утечки тока.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Автоэлектрика">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Автоэлектрика">Записаться</button></div></div></article>
       <article class="svc reveal"><div class="ic"><svg><use href="#i-wrench"/></svg></div><h3 class="h3">Ремонт узлов и агрегатов</h3><p>Редукторы, мосты, раздатки, топливная аппаратура — разберём и восстановим.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Узлы и агрегаты">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Узлы и агрегаты">Записаться</button></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ПОДБОР ЗАПЧАСТЕЙ ================= -->
+<section class="sec" id="parts" aria-labelledby="parts-h" style="padding-top:0">
+  <div class="wrap parts">
+    <div class="reveal">
+      <figure class="parts-photo"><picture><source type="image/webp" srcset="assets/img/klientskaya-640.webp 640w, assets/img/klientskaya.webp 1200w" sizes="(max-width:900px) 100vw, 50vw"><img src="assets/img/klientskaya.jpg" srcset="assets/img/klientskaya-640.jpg 640w, assets/img/klientskaya.jpg 1200w" sizes="(max-width:900px) 100vw, 50vw" alt="Клиентская зона автосервиса «Панорама Мастер»: стойка администратора и витрина с маслами и расходниками" loading="lazy" width="1179" height="879"></picture><figcaption>Клиентская зона и витрина</figcaption></figure>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Запчасти</span>
+      <h2 id="parts-h" class="h2">Подберём <span class="accent">запчасти</span> под вашу машину</h2>
+      <p class="lead" style="margin-top:16px">Не нужно искать детали самому и гадать с каталожными номерами — подберём нужную запчасть под вашу ГАЗель, Портер, Транспортер или легковой автомобиль.</p>
+      <ul class="parts-list">
+        <li><span class="ic"><svg><use href="#i-search"/></svg></span><div><b>Подбор по VIN</b><span>Точно под вашу комплектацию и год выпуска.</span></div></li>
+        <li><span class="ic"><svg><use href="#i-scale"/></svg></span><div><b>Варианты на выбор</b><span>Оригинал или проверенный аналог — под ваш бюджет.</span></div></li>
+        <li><span class="ic"><svg><use href="#i-box"/></svg></span><div><b>Сроки и наличие</b><span><span class="ph">[ЗАПОЛНИТЬ: что в наличии, сроки поставки под заказ]</span></span></div></li>
+      </ul>
+      <form class="card-form js-book" data-type="parts" novalidate>
+        <h3 class="h3">Запрос на подбор</h3>
+        <p>Напишите, что нужно, — пришлём варианты и цены.</p>
+        <div class="field-row" style="margin-top:0">
+          <div class="field"><label for="p-car">Марка и модель</label><input id="p-car" name="car" placeholder="Например, ГАЗель Next 2019"></div>
+          <div class="field"><label for="p-vin">VIN (необязательно)</label><input id="p-vin" name="vin" placeholder="17 символов" maxlength="17" autocapitalize="characters" spellcheck="false"></div>
+        </div>
+        <div class="field"><label for="p-part">Какая запчасть нужна</label><input id="p-part" name="part" placeholder="Например, комплект сцепления"></div>
+        <div class="field"><label for="p-phone">Телефон *</label><input id="p-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки ПДн</a></span></label>
+        <button class="btn btn-primary" type="submit"><svg><use href="#i-search"/></svg>Подобрать запчасти</button>
+      </form>
     </div>
   </div>
 </section>
@@ -943,21 +947,13 @@ section{position:relative}
 <!-- ================= ГАЛЕРЕЯ ================= -->
 <section class="sec" aria-labelledby="gal-h" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head reveal"><div><span class="eyebrow">Наш сервис</span><h2 id="gal-h" class="h2">Цех и работы</h2></div><p class="lead">Потяните ползунок, чтобы сравнить «до» и «после».</p></div>
+    <div class="sec-head reveal"><div><span class="eyebrow">Наш сервис</span><h2 id="gal-h" class="h2">Цех и оборудование</h2></div><p class="lead">Нажмите на фото, чтобы открыть крупно.</p></div>
     <div class="gallery reveal">
-      <div class="g ba">
-        <div class="ba-wrap">
-          <div class="ba-pane ba-before">До</div>
-          <div class="ba-pane ba-after" id="baAfter">После</div>
-          <div class="ba-line" id="baLine"></div>
-        </div>
-        <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Сравнение до и после">
-        <span class="ba-cap">[ЗАПОЛНИТЬ: фото до/после ремонта]</span>
-      </div>
-      <div class="g"><div><svg><use href="#i-cam"/></svg>Фото цеха / подъёмники</div></div>
-      <div class="g"><div><svg><use href="#i-cam"/></svg>ГАЗель на посту</div></div>
-      <div class="g"><div><svg><use href="#i-cam"/></svg>Диагностическое оборудование</div></div>
-      <div class="g"><div><svg><use href="#i-cam"/></svg>Команда мастеров</div></div>
+      <button type="button" class="g tall" data-full="assets/img/lift-gazel.jpg" data-cap="ГАЗель на четырёхстоечном подъёмнике"><picture><source type="image/webp" srcset="assets/img/lift-gazel-640.webp 640w, assets/img/lift-gazel.webp 1200w" sizes="(max-width:820px) 50vw, 33vw"><img src="assets/img/lift-gazel.jpg" srcset="assets/img/lift-gazel-640.jpg 640w, assets/img/lift-gazel.jpg 1200w" sizes="(max-width:820px) 50vw, 33vw" alt="ГАЗель на четырёхстоечном подъёмнике" loading="lazy"></picture><span class="g-cap">ГАЗель на четырёхстоечном подъёмнике</span></button>
+      <button type="button" class="g " data-full="assets/img/tsekh-yama.jpg" data-cap="Цех: смотровая яма и подъёмники"><picture><source type="image/webp" srcset="assets/img/tsekh-yama-640.webp 640w, assets/img/tsekh-yama.webp 1200w" sizes="(max-width:820px) 50vw, 33vw"><img src="assets/img/tsekh-yama.jpg" srcset="assets/img/tsekh-yama-640.jpg 640w, assets/img/tsekh-yama.jpg 1200w" sizes="(max-width:820px) 50vw, 33vw" alt="Цех: смотровая яма и подъёмники" loading="lazy"></picture><span class="g-cap">Цех: смотровая яма и подъёмники</span></button>
+      <button type="button" class="g " data-full="assets/img/tsekh-posty.jpg" data-cap="Посты для коммерческого и легкового транспорта"><picture><source type="image/webp" srcset="assets/img/tsekh-posty-640.webp 640w, assets/img/tsekh-posty.webp 1200w" sizes="(max-width:820px) 50vw, 33vw"><img src="assets/img/tsekh-posty.jpg" srcset="assets/img/tsekh-posty-640.jpg 640w, assets/img/tsekh-posty.jpg 1200w" sizes="(max-width:820px) 50vw, 33vw" alt="Посты для коммерческого и легкового транспорта" loading="lazy"></picture><span class="g-cap">Посты для коммерческого и легкового транспорта</span></button>
+      <button type="button" class="g " data-full="assets/img/shinomontazh.jpg" data-cap="Шиномонтажное оборудование"><picture><source type="image/webp" srcset="assets/img/shinomontazh-640.webp 640w, assets/img/shinomontazh.webp 1200w" sizes="(max-width:820px) 50vw, 33vw"><img src="assets/img/shinomontazh.jpg" srcset="assets/img/shinomontazh-640.jpg 640w, assets/img/shinomontazh.jpg 1200w" sizes="(max-width:820px) 50vw, 33vw" alt="Шиномонтажное оборудование" loading="lazy"></picture><span class="g-cap">Шиномонтажное оборудование</span></button>
+      <button type="button" class="g " data-full="assets/img/klientskaya.jpg" data-cap="Клиентская зона"><picture><source type="image/webp" srcset="assets/img/klientskaya-640.webp 640w, assets/img/klientskaya.webp 1200w" sizes="(max-width:820px) 50vw, 33vw"><img src="assets/img/klientskaya.jpg" srcset="assets/img/klientskaya-640.jpg 640w, assets/img/klientskaya.jpg 1200w" sizes="(max-width:820px) 50vw, 33vw" alt="Клиентская зона" loading="lazy"></picture><span class="g-cap">Клиентская зона</span></button>
     </div>
   </div>
 </section>
@@ -1093,6 +1089,14 @@ section{position:relative}
     <button class="btn btn-primary" type="submit" id="book-btn"><svg><use href="#i-cal"/></svg><span>Записаться</span></button>
     <p class="bf-note">Перезваниваем в рабочее время за <span class="ph">[N] мин</span> · Или звоните: <a href="tel:+79017110411" class="accent" data-goal="click_phone">+7 (901) 711-04-11</a></p>
   </form>
+</dialog>
+
+<dialog class="lightbox" id="lightbox" aria-label="Просмотр фото">
+  <img alt="" id="lbImg">
+  <p id="lbCap"></p>
+  <button type="button" class="lb-btn lb-prev" aria-label="Предыдущее фото">‹</button>
+  <button type="button" class="lb-btn lb-next" aria-label="Следующее фото">›</button>
+  <button type="button" class="lb-close" aria-label="Закрыть" data-close>×</button>
 </dialog>
 
 <dialog class="modal" id="exitModal" aria-labelledby="exit-h">
@@ -1299,7 +1303,7 @@ const bookModal = document.getElementById('bookModal');
 const bookForm = bookModal.querySelector('form');
 const BOOK_HTML = bookForm.innerHTML;
 function fillServices(){
-  bookForm.querySelector('#bookServices').innerHTML = Object.keys(WORKS).map(w=>`<label class="chip"><input type="radio" name="service" value="${esc(w)}"><span>${esc(w==='Не знаю'?'Не знаю':w)}</span></label>`).join('');
+  bookForm.querySelector('#bookServices').innerHTML = [...Object.keys(WORKS), 'Подбор запчастей'].map(w=>`<label class="chip"><input type="radio" name="service" value="${esc(w)}"><span>${esc(w==='Не знаю'?'Не знаю':w)}</span></label>`).join('');
 }
 function updateSlots(){
   const t = mskHour(), days = bookForm.querySelector('#bookDays'); if (!days) return;
@@ -1345,9 +1349,9 @@ document.addEventListener('submit', e=>{
   const data = Object.fromEntries(new FormData(f)); delete data.pd;
   sendLead(type, data);
   goal(type+'_submit'); goal('form_submit');
-  const rows = [data.service && `<li><b>Услуга:</b>${esc(data.service)}</li>`, data.day && type==='book' && `<li><b>Когда:</b>${esc(data.day)}${data.time?', '+esc(data.time):''}</li>`, `<li><b>Телефон:</b>${esc(data.phone)}${data.contact&&data.contact!=='Звонок'?' · '+esc(data.contact):''}</li>`].filter(Boolean).join('');
-  const title = type==='book' ? 'Вы записаны!' : 'Заявка принята!';
-  const note = type==='book' ? `${callbackEta()} Мастер подтвердит время записи.` : callbackEta();
+  const rows = [data.service && `<li><b>Услуга:</b>${esc(data.service)}</li>`, data.car && `<li><b>Автомобиль:</b>${esc(data.car)}${data.vin?' · VIN '+esc(data.vin):''}</li>`, data.part && `<li><b>Запчасть:</b>${esc(data.part)}</li>`, data.day && type==='book' && `<li><b>Когда:</b>${esc(data.day)}${data.time?', '+esc(data.time):''}</li>`, `<li><b>Телефон:</b>${esc(data.phone)}${data.contact&&data.contact!=='Звонок'?' · '+esc(data.contact):''}</li>`].filter(Boolean).join('');
+  const title = type==='book' ? 'Вы записаны!' : type==='parts' ? 'Запрос на подбор принят!' : 'Заявка принята!';
+  const note = type==='book' ? `${callbackEta()} Мастер подтвердит время записи.` : type==='parts' ? callbackEta().replace('перезвонит','перезвонит с вариантами запчастей') : callbackEta();
   if (f.closest('dialog')){
     f.dataset.done = '1';
     f.innerHTML = `<button type="button" class="x" aria-label="Закрыть" data-close>×</button><div class="done-box"><div class="ok">${OK_ICON}</div><h3 class="h3">${title}</h3><ul>${rows}</ul><p style="color:var(--muted)">${note}</p><button type="button" class="btn btn-primary" data-close style="margin-top:18px">Готово</button></div>`;
@@ -1383,10 +1387,24 @@ document.getElementById('b2bForm').addEventListener('submit', e=>{
   f.innerHTML = '<div class="done"><div class="ok"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg></div><h3 class="h3">Спасибо!</h3><p class="lead" style="margin:10px auto 0">Свяжемся и пришлём условия для вашего парка.</p></div>';
 });
 
-/* ===== До/после ===== */
+/* ===== Бургер-меню ===== */
 (function(){
-  const r = document.getElementById('baRange'), a = document.getElementById('baAfter'), l = document.getElementById('baLine');
-  r.addEventListener('input', ()=>{ a.style.clipPath = `inset(0 0 0 ${r.value}%)`; l.style.left = r.value+'%'; });
+  const h = document.querySelector('.header'), b = h.querySelector('.burger');
+  const set = open => { h.classList.toggle('open', open); b.setAttribute('aria-expanded', open); b.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню'); };
+  b.addEventListener('click', ()=>set(!h.classList.contains('open')));
+  h.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click', ()=>set(false)));
+  document.addEventListener('keydown', e=>{ if (e.key==='Escape') set(false); });
+})();
+
+/* ===== Галерея: просмотр крупно ===== */
+(function(){
+  const lb = document.getElementById('lightbox'), img = document.getElementById('lbImg'), cap = document.getElementById('lbCap');
+  const items = [...document.querySelectorAll('.g[data-full]')]; let k = 0;
+  const show = n => { k = (n + items.length) % items.length; img.src = items[k].dataset.full; img.alt = items[k].dataset.cap; cap.textContent = items[k].dataset.cap; };
+  items.forEach((b,n)=>b.addEventListener('click', ()=>{ show(n); lb.showModal(); goal('gallery_open'); }));
+  lb.querySelector('.lb-prev').addEventListener('click', ()=>show(k-1));
+  lb.querySelector('.lb-next').addEventListener('click', ()=>show(k+1));
+  lb.addEventListener('keydown', e=>{ if(e.key==='ArrowLeft') show(k-1); if(e.key==='ArrowRight') show(k+1); });
 })();
 
 /* ===== Cookie-баннер ===== */
