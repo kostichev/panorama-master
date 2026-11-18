@@ -304,6 +304,55 @@ a.badge:hover{border-color:var(--orange);color:#fff}
   }
 }
 
+/* ===== Форма обратного звонка на первом экране ===== */
+.qform{position:relative;max-width:560px;margin-bottom:24px;padding:22px;border-radius:22px;background:rgba(18,18,18,.66);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 30px 70px -30px rgba(0,0,0,.85)}
+.qform::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(232,116,59,.75),transparent 40%,transparent 70%,rgba(232,116,59,.35));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.qf-head{display:grid;gap:4px;margin-bottom:16px}
+.qf-head b{font-size:clamp(18px,1.6vw,21px);line-height:1.25;color:#fff}
+.qf-head small{font-size:14px;color:var(--dim);line-height:1.45}
+.qf-live{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:5px 11px;border-radius:99px;background:rgba(61,214,130,.1);color:#7FE3AA;font-size:12.5px;font-weight:700;margin-bottom:6px}
+.qf-live i{width:7px;height:7px;border-radius:50%;background:#3DD682;box-shadow:0 0 0 0 rgba(61,214,130,.6);animation:live 1.8s infinite}
+@keyframes live{70%{box-shadow:0 0 0 8px rgba(61,214,130,0)}100%{box-shadow:0 0 0 0 rgba(61,214,130,0)}}
+.qf-fields{display:grid;grid-template-columns:1fr 1.25fr;gap:10px}
+.qf-field{position:relative}
+.qf-field svg{position:absolute;left:15px;top:50%;width:18px;height:18px;transform:translateY(-50%);color:var(--dim);pointer-events:none;transition:color .2s}
+.qf-field input{width:100%;min-width:0;min-height:58px;padding:0 14px 0 44px;border-radius:14px;border:1.5px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:17px;font-weight:600;transition:border-color .2s,background .2s,box-shadow .2s}
+.qf-field input::placeholder{color:rgba(255,255,255,.42);font-weight:500}
+.qf-field input:focus{outline:none;border-color:var(--orange);background:rgba(255,255,255,.09);box-shadow:0 0 0 4px rgba(232,116,59,.18)}
+.qf-field:focus-within svg{color:var(--orange)}
+.qf-field input.ok{border-color:rgba(61,214,130,.7)}
+.qf-btn{width:100%;min-height:60px;margin-top:10px;font-size:17px}
+.qform .consent{margin-top:12px}
+.qf-or{display:flex;align-items:center;gap:12px;margin-top:14px;color:var(--dim);font-size:13px}
+.qf-or::before,.qf-or::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.1)}
+.qf-call{display:flex;justify-content:center;align-items:center;gap:10px;min-height:52px;margin-top:12px;border-radius:14px;border:1.5px solid rgba(255,255,255,.16);color:#fff;font-weight:800;font-size:17px;letter-spacing:.02em;transition:border-color .2s,background .2s}
+.qf-call svg{width:18px;height:18px;color:var(--orange)}
+.qf-call:hover{border-color:var(--orange);background:rgba(232,116,59,.08)}
+@media (max-width:560px){.qf-fields{grid-template-columns:1fr}.qform{padding:18px}}
+@media (min-width:821px){
+  .qf-or,.qf-call{display:none}                 /* на компьютере телефон и так в шапке */
+  .hero-scene{bottom:auto;height:min(100vh,940px);-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
+}
+
+/* ===== Плавность и живость ===== */
+.scroll-progress{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--orange-2),var(--orange),var(--orange-deep));z-index:300;pointer-events:none}
+.btn-primary{position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .6s ease;pointer-events:none}
+.btn-primary:hover::after{left:120%}
+.svc,.model{--mx:50%;--my:50%}
+.svc::after,.model::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(380px circle at var(--mx) var(--my),rgba(232,116,59,.14),transparent 60%)}
+.svc:hover::after,.model:hover::after{opacity:1}
+@media (prefers-reduced-motion:no-preference){
+  .hero-scene img{animation:heroZoom 2.2s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes heroZoom{from{transform:scale(1.12);opacity:0}to{transform:scale(1);opacity:1}}
+  .hero .intro>*{animation:introUp .9s cubic-bezier(.2,.8,.2,1) both}
+  .hero .intro>:nth-child(2){animation-delay:.12s}.hero .intro>:nth-child(3){animation-delay:.24s}.hero .intro>:nth-child(4){animation-delay:.36s}.hero .intro>:nth-child(5){animation-delay:.48s}.hero .intro>:nth-child(6){animation-delay:.6s}
+  @keyframes introUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  /* появление блоков при прокрутке — во всех браузерах */
+  .js-rv .reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 70ms)}
+  .js-rv .reveal.in{opacity:1;transform:none}
+}
+
 /* ============ СЕКЦИИ ============ */
 section{position:relative}
 .sec{padding:clamp(72px,10vw,128px) 0}
@@ -312,12 +361,7 @@ section{position:relative}
 .divider{width:2px;align-self:stretch;background:linear-gradient(var(--orange),transparent)}
 
 /* появление при скролле */
-@supports (animation-timeline:view()){
-  @media (prefers-reduced-motion:no-preference){
-    .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
-    @keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-  }
-}
+
 
 /* ============ СПЕЦИАЛИЗАЦИЯ ============ */
 .spec{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
@@ -673,26 +717,38 @@ section{position:relative}
 
 <!-- ================= HERO ================= -->
 <section class="hero" aria-labelledby="h1">
-  <div class="hero-scene" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/angar-bg-960.webp 960w, assets/img/angar-bg.webp 1920w" sizes="100vw"><img src="assets/img/angar-bg.jpg" srcset="assets/img/angar-bg-960.jpg 960w, assets/img/angar-bg.jpg 1920w" sizes="100vw" width="1920" height="1115" alt="" fetchpriority="high"></picture></div>
+  <div class="hero-scene" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/angar-bg-800.webp 800w, assets/img/angar-bg-1280.webp 1280w, assets/img/angar-bg.webp 2080w" sizes="(max-width:820px) 100vw, 66vw"><img src="assets/img/angar-bg.jpg" srcset="assets/img/angar-bg-800.jpg 800w, assets/img/angar-bg-1280.jpg 1280w, assets/img/angar-bg.jpg 2080w" sizes="(max-width:820px) 100vw, 66vw" width="2080" height="1208" alt="" fetchpriority="high"></picture></div>
   <span class="bolt tl" aria-hidden="true"></span>
   <span class="bolt br" aria-hidden="true"></span>
 
   <div class="wrap">
-    <div class="hero-content">
+    <div class="hero-content intro">
       <span class="eyebrow">Автосервис и автозапчасти «Панорама Мастер»</span>
       <h1 id="h1" class="h-display">Ремонт и запчасти для ГАЗели, Портера <span class="l2">и Транспортера</span><span class="sr"> в Балашихе</span></h1>
       <p class="lead">Ремонтируем легковой и лёгкий коммерческий транспорт и подбираем запчасти по VIN — оригинал или проверенный аналог. Машина стоит — бизнес теряет деньги: найдём причину, согласуем цену и&nbsp;быстро вернём машину на линию.</p>
-      <form class="quick js-book" id="quickHero" data-type="quick" novalidate>
-        <div class="quick-row">
-          <label class="sr" for="qh-name">Имя</label>
-          <input id="qh-name" name="name" autocomplete="given-name" placeholder="Ваше имя" required minlength="2" class="qh-name">
-          <label class="sr" for="qh-phone">Телефон</label>
-          <input id="qh-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask>
-          <button class="btn btn-primary" type="submit"><svg><use href="#i-phone"/></svg>Перезвоните мне</button>
+      <form class="qform js-book" id="quickHero" data-type="quick" novalidate>
+        <div class="qf-head">
+          <span class="qf-live"><i></i><span class="js-status">Ежедневно 09:00–21:00</span></span>
+          <b>Перезвоним и подскажем бесплатно</b>
+          <small>Мастер ответит на вопросы, сориентирует по цене и запишет на удобное время</small>
+        </div>
+        <div class="qf-fields">
+          <div class="qf-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <label class="sr" for="qh-name">Имя</label>
+            <input id="qh-name" name="name" autocomplete="given-name" placeholder="Ваше имя" required minlength="2" enterkeyhint="next">
+          </div>
+          <div class="qf-field">
+            <svg aria-hidden="true"><use href="#i-phone"/></svg>
+            <label class="sr" for="qh-phone">Телефон</label>
+            <input id="qh-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask enterkeyhint="send">
+          </div>
         </div>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary qf-btn" type="submit"><svg><use href="#i-phone"/></svg>Перезвоните мне</button>
         <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен на обработку <a href="privacy.html" target="_blank" rel="noopener">персональных данных</a></span></label>
-        <p class="quick-note">Оставьте имя и телефон — мастер перезвонит и запишет на удобное время. Или звоните сами: <a href="tel:+79017110411" data-goal="click_phone">+7 (901) 711-04-11</a></p>
+        <div class="qf-or"><span>или позвоните сами</span></div>
+        <a class="qf-call" href="tel:+79017110411" data-goal="click_phone"><svg><use href="#i-phone"/></svg>+7 (901) 711-04-11</a>
       </form>
       <div class="hero-parts"><a class="btn btn-ghost" href="#parts" data-goal="parts_cta"><svg><use href="#i-search"/></svg>Подобрать запчасть</a><span>По VIN или марке — пришлём варианты и цены</span></div>
       <div class="badges">
@@ -704,14 +760,6 @@ section{position:relative}
 </section>
 
 <!-- Фирменная плашка-мазок как на визитке -->
-<div class="brush-band">
-  <div class="wrap">
-    <div class="brush" role="note">
-      <svg class="gear" viewBox="0 0 64 40"><use href="#i-gear"/></svg>
-      <span>Диагностика</span><i class="dot"></i><span>ТО</span><i class="dot"></i><span>Ремонт узлов и агрегатов</span><i class="dot"></i><span>Подбор запчастей</span>
-    </div>
-  </div>
-</div>
 
 <!-- ================= ПОДБОР ЗАПЧАСТЕЙ ================= -->
 <section class="sec" id="parts" aria-labelledby="parts-h">
@@ -1396,6 +1444,83 @@ document.getElementById('b2bForm').addEventListener('submit', e=>{
     const b = e.target.closest('[data-cookie]'); if(!b) return;
     try{ localStorage.setItem('cookie', b.dataset.cookie); }catch(e){}
     c.classList.remove('show');
+  });
+})();
+
+/* ===== Плавная прокрутка, параллакс и анимации ===== */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+
+  // полоса прогресса прокрутки
+  const bar = document.createElement('div'); bar.className = 'scroll-progress'; bar.setAttribute('aria-hidden','true');
+  document.body.appendChild(bar);
+
+  // параллакс фона первого экрана
+  const scene = document.querySelector('.hero-scene'), hero = document.querySelector('.hero');
+  function onFrame(){
+    const y = scrollY, max = root.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    if (scene && !reduce && y < hero.offsetHeight){ scene.style.transform = `translate3d(0,${y * 0.28}px,0)`; scene.style.opacity = String(1 - Math.min(y / hero.offsetHeight, 1) * 0.6); }
+  }
+  addEventListener('scroll', () => requestAnimationFrame(onFrame), {passive:true}); onFrame();
+
+  if (reduce) return;
+
+  // появление блоков: со «ступенькой» внутри сеток
+  root.classList.add('js-rv');
+  document.querySelectorAll('.reveal').forEach(el => {
+    const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    if (sib.length > 1) el.style.setProperty('--i', String(sib.indexOf(el) % 6));
+  });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // подсветка карточек за курсором
+  document.addEventListener('pointermove', e => {
+    const c = e.target.closest && e.target.closest('.svc,.model'); if (!c) return;
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, {passive:true});
+
+  // поле телефона «зеленеет», когда номер введён полностью
+  document.querySelectorAll('.qf-field input').forEach(i => i.addEventListener('input', () => {
+    const ok = i.name === 'phone' ? i.value.replace(/\D/g,'').length === 11 : i.value.trim().length >= 2;
+    i.classList.toggle('ok', ok);
+  }));
+  const qn = document.getElementById('qh-name');
+  if (qn) qn.addEventListener('keydown', e => { if (e.key === 'Enter'){ e.preventDefault(); document.getElementById('qh-phone').focus(); } });
+
+  // плавная прокрутка колесом мыши (только на компьютере с мышью)
+  if (!matchMedia('(pointer:fine)').matches) return;
+  root.style.scrollBehavior = 'auto';
+  let target = scrollY, cur = scrollY, raf = 0, own = false;
+  const maxY = () => root.scrollHeight - innerHeight;
+  function tick(){
+    cur += (target - cur) * 0.11;
+    if (Math.abs(target - cur) < 0.6) cur = target;
+    own = true; scrollTo(0, cur);
+    raf = cur === target ? 0 : requestAnimationFrame(tick);
+  }
+  function go(y){ target = Math.max(0, Math.min(maxY(), y)); if (!raf){ cur = scrollY; raf = requestAnimationFrame(tick); } }
+  addEventListener('wheel', e => {
+    if (e.ctrlKey || e.defaultPrevented || document.querySelector('dialog[open]')) return;
+    for (let el = e.target; el && el !== document.body; el = el.parentElement){
+      const oy = getComputedStyle(el).overflowY;
+      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1) return;   // свои прокрутки (карта, списки)
+    }
+    e.preventDefault();
+    if (!raf) target = scrollY;
+    go(target + (e.deltaMode === 1 ? e.deltaY * 40 : e.deltaY));
+  }, {passive:false});
+  addEventListener('scroll', () => { if (own){ own = false; return; } if (!raf){ target = cur = scrollY; } }, {passive:true});
+  // переходы по ссылкам-якорям — тоже плавно
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented) return;
+    const id = a.getAttribute('href'); if (id.length < 2) return;
+    const el = document.querySelector(id); if (!el) return;
+    e.preventDefault(); history.replaceState(null, '', id);
+    go(el.getBoundingClientRect().top + scrollY - 84);
   });
 })();
 </script>
