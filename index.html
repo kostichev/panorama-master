@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ремонт ГАЗели, Портера, Транспортера в Балашихе — «Панорама Мастер»</title>
-<meta name="description" content="Автосервис «Панорама Мастер» в Балашихе (Соболиха, рядом с Железнодорожным): диагностика, ТО, ремонт узлов и агрегатов, подбор запчастей для ГАЗель, Hyundai Porter, VW Transporter и легковых. 09:00–21:00 без выходных. +7 (901) 711-04-11">
+<title>Ремонт и запчасти для ГАЗели, Портера, Транспортера в Балашихе — «Панорама Мастер»</title>
+<meta name="description" content="Автосервис и автозапчасти «Панорама Мастер» в Балашихе (Соболиха, рядом с Железнодорожным): подбор запчастей по VIN — оригинал и аналоги, диагностика, ТО, ремонт ГАЗели, Hyundai Porter, VW Transporter и легковых. 09:00–21:00 без выходных. +7 (901) 711-04-11">
 <meta name="theme-color" content="#121212">
 <link rel="canonical" href="https://[ЗАПОЛНИТЬ-ДОМЕН]/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Автосервис «Панорама Мастер» — ремонт коммерческого транспорта в Балашихе">
-<meta property="og:description" content="ГАЗель, Портер, Транспортер и легковые. Диагностика, ТО, ремонт узлов и агрегатов. Без выходных 09:00–21:00.">
+<meta property="og:title" content="«Панорама Мастер» — ремонт и запчасти для коммерческого транспорта в Балашихе">
+<meta property="og:description" content="Подбор запчастей по VIN и ремонт: ГАЗель, Портер, Транспортер и легковые. Без выходных 09:00–21:00.">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://kostichev.github.io/panorama-master/assets/img/vizitka.jpg">
 <meta property="og:image:width" content="1179"><meta property="og:image:height" content="653">
@@ -21,7 +21,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AutoRepair",
+  "@type": ["AutoRepair", "AutoPartsStore"],
   "name": "Автосервис «Панорама Мастер»",
   "description": "Ремонт всех легковых и легкого коммерческого транспорта: ГАЗель, Hyundai Porter, VW Transporter. Диагностика, ТО, ремонт узлов и агрегатов, подбор запчастей.",
   "image": "https://kostichev.github.io/panorama-master/assets/img/vizitka.jpg",
@@ -160,7 +160,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 }
 .hero .wrap{min-height:min(88vh,780px);display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,4vw,56px);align-items:center;padding-top:56px;padding-bottom:110px}
 .hero-content{max-width:660px}
-.hero h1{font-size:clamp(36px,4.5vw,62px);margin:6px 0 22px}
+.hero h1{font-size:clamp(30px,3.9vw,54px);margin:6px 0 22px}
 .hero h1 .l2{display:block;white-space:nowrap;background:linear-gradient(100deg,#FFB083,var(--orange) 40%,var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
 .hero .lead{margin-bottom:30px;max-width:54ch}
 .badges{display:flex;flex-wrap:wrap;gap:10px}
@@ -199,6 +199,8 @@ a.badge:hover{border-color:var(--orange);color:#fff}
 .quick-row input:focus{outline:none;background:rgba(255,255,255,.05)}
 .quick-row:focus-within{border-color:var(--orange)}
 .quick .consent{margin-top:12px}
+.hero-parts{display:flex;align-items:center;gap:14px;flex-wrap:wrap;max-width:580px;margin:-14px 0 28px}
+.hero-parts span{font-size:14px;color:var(--dim)}
 .quick-note{font-size:14px;color:var(--dim);margin-top:6px}
 .quick-note a{color:#fff;font-weight:700;white-space:nowrap}
 .quick-done{display:flex;gap:16px;align-items:center;padding:18px 20px;border-radius:18px;background:rgba(232,116,59,.12);border:1px solid rgba(232,116,59,.5);max-width:580px;margin-bottom:30px}
@@ -627,7 +629,7 @@ section{position:relative}
   </defs>
 </svg>
 
-<span class="mock-flag">Макет · v0.3</span>
+
 
 <!-- ================= HEADER ================= -->
 <header class="header">
@@ -646,8 +648,8 @@ section{position:relative}
       </svg>
     </a>
     <nav class="nav" id="nav" aria-label="Основное меню">
-      <a href="#services">Услуги</a>
       <a href="#parts">Запчасти</a>
+      <a href="#services">Услуги</a>
       <a href="#quiz">Расчёт цены</a>
       <a href="#b2b">Автопаркам</a>
       <a href="#why">О нас</a>
@@ -673,9 +675,9 @@ section{position:relative}
 
   <div class="wrap">
     <div class="hero-content">
-      <span class="eyebrow">Автосервис «Панорама Мастер»</span>
-      <h1 id="h1" class="h-display">Ремонт ГАЗели, Портера <span class="l2">и Транспортера</span><span class="sr"> в Балашихе</span></h1>
-      <p class="lead">Ремонт всех легковых и легкого коммерческого транспорта. Машина стоит — бизнес теряет деньги. Найдём причину, согласуем цену и&nbsp;вернём машину на линию как можно быстрее.</p>
+      <span class="eyebrow">Автосервис и автозапчасти «Панорама Мастер»</span>
+      <h1 id="h1" class="h-display">Ремонт и запчасти для ГАЗели, Портера <span class="l2">и Транспортера</span><span class="sr"> в Балашихе</span></h1>
+      <p class="lead">Ремонтируем легковой и лёгкий коммерческий транспорт и подбираем запчасти по VIN — оригинал или проверенный аналог. Машина стоит — бизнес теряет деньги: найдём причину, согласуем цену и&nbsp;быстро вернём машину на линию.</p>
       <form class="quick js-book" id="quickHero" data-type="quick" novalidate>
         <div class="quick-row">
           <label class="sr" for="qh-phone">Телефон</label>
@@ -686,10 +688,10 @@ section{position:relative}
         <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен на обработку <a href="privacy.html" target="_blank" rel="noopener">персональных данных</a></span></label>
         <p class="quick-note">Оставьте номер — мастер перезвонит и подберёт удобное время. Или звоните сами: <a href="tel:+79017110411" data-goal="click_phone">+7 (901) 711-04-11</a></p>
       </form>
+      <div class="hero-parts"><a class="btn btn-ghost" href="#parts" data-goal="parts_cta"><svg><use href="#i-search"/></svg>Подобрать запчасть</a><span>По VIN или марке — пришлём варианты и цены</span></div>
       <div class="badges">
         <span class="badge"><span class="ic"><svg><use href="#i-clock"/></svg></span>09:00–21:00 без выходных</span>
         <span class="badge"><span class="ic"><svg><use href="#i-pin"/></svg></span>Соболиха / Железнодорожный</span>
-        <a class="badge" href="#parts"><span class="ic"><svg><use href="#i-gear-sm"/></svg></span>Подбор запчастей</a>
       </div>
     </div>
     <figure class="hero-card"><picture><source type="image/webp" srcset="assets/img/vizitka-640.webp 640w, assets/img/vizitka.webp 1200w" sizes="(max-width:820px) 100vw, 46vw"><img src="assets/img/vizitka.jpg" srcset="assets/img/vizitka-640.jpg 640w, assets/img/vizitka.jpg 1200w" sizes="(max-width:820px) 100vw, 46vw" alt="Визитка автосервиса «Панорама Мастер»: ремонт ГАЗель, Портер, Транспортер, легковых и коммерческих авто. Телефон +7 (901) 711-04-11, Соболиха, ул. Новослободская, 50, 09:00–21:00 без выходных" width="1179" height="653" fetchpriority="high"></picture></figure>
@@ -705,6 +707,38 @@ section{position:relative}
     </div>
   </div>
 </div>
+
+<!-- ================= ПОДБОР ЗАПЧАСТЕЙ ================= -->
+<section class="sec" id="parts" aria-labelledby="parts-h">
+  <div class="wrap parts">
+    <div class="reveal">
+      <figure class="parts-photo"><picture><source type="image/webp" srcset="assets/img/klientskaya-640.webp 640w, assets/img/klientskaya.webp 1200w" sizes="(max-width:900px) 100vw, 50vw"><img src="assets/img/klientskaya.jpg" srcset="assets/img/klientskaya-640.jpg 640w, assets/img/klientskaya.jpg 1200w" sizes="(max-width:900px) 100vw, 50vw" alt="Клиентская зона автосервиса «Панорама Мастер»: стойка администратора и витрина с маслами и расходниками" loading="lazy" width="1179" height="879"></picture><figcaption>Клиентская зона и витрина</figcaption></figure>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Запчасти</span>
+      <h2 id="parts-h" class="h2">Подберём <span class="accent">запчасти</span> под вашу машину</h2>
+      <p class="lead" style="margin-top:16px">Не нужно искать детали самому и гадать с каталожными номерами — подберём нужную запчасть под вашу ГАЗель, Портер, Транспортер или легковой автомобиль.</p>
+      <ul class="parts-list">
+        <li><span class="ic"><svg><use href="#i-search"/></svg></span><div><b>Подбор по VIN</b><span>Точно под вашу комплектацию и год выпуска.</span></div></li>
+        <li><span class="ic"><svg><use href="#i-scale"/></svg></span><div><b>Варианты на выбор</b><span>Оригинал или проверенный аналог — под ваш бюджет.</span></div></li>
+        <li><span class="ic"><svg><use href="#i-box"/></svg></span><div><b>Сроки и наличие</b><span><span class="ph">[ЗАПОЛНИТЬ: что в наличии, сроки поставки под заказ]</span></span></div></li>
+      </ul>
+      <form class="card-form js-book" data-type="parts" novalidate>
+        <h3 class="h3">Запрос на подбор</h3>
+        <p>Напишите, что нужно, — пришлём варианты и цены.</p>
+        <div class="field-row" style="margin-top:0">
+          <div class="field"><label for="p-car">Марка и модель</label><input id="p-car" name="car" placeholder="Например, ГАЗель Next 2019"></div>
+          <div class="field"><label for="p-vin">VIN (необязательно)</label><input id="p-vin" name="vin" placeholder="17 символов" maxlength="17" autocapitalize="characters" spellcheck="false"></div>
+        </div>
+        <div class="field"><label for="p-part">Какая запчасть нужна</label><input id="p-part" name="part" placeholder="Например, комплект сцепления"></div>
+        <div class="field"><label for="p-phone">Телефон *</label><input id="p-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки ПДн</a></span></label>
+        <button class="btn btn-primary" type="submit"><svg><use href="#i-search"/></svg>Подобрать запчасти</button>
+      </form>
+    </div>
+  </div>
+</section>
 
 <!-- ================= СПЕЦИАЛИЗАЦИЯ ================= -->
 <section class="sec" id="models" aria-labelledby="models-h">
@@ -760,38 +794,6 @@ section{position:relative}
       <article class="svc reveal"><div class="ic"><svg><use href="#i-brake"/></svg></div><h3 class="h3">Тормозная система</h3><p>Колодки, диски, барабаны, суппорты, прокачка и замена жидкости.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Тормозная система">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Тормозная система">Записаться</button></div></div></article>
       <article class="svc reveal"><div class="ic"><svg><use href="#i-bolt"/></svg></div><h3 class="h3">Автоэлектрика</h3><p>Генератор, стартер, проводка, свет, поиск утечки тока.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Автоэлектрика">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Автоэлектрика">Записаться</button></div></div></article>
       <article class="svc reveal"><div class="ic"><svg><use href="#i-wrench"/></svg></div><h3 class="h3">Ремонт узлов и агрегатов</h3><p>Редукторы, мосты, раздатки, топливная аппаратура — разберём и восстановим.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Узлы и агрегаты">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Узлы и агрегаты">Записаться</button></div></div></article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ПОДБОР ЗАПЧАСТЕЙ ================= -->
-<section class="sec" id="parts" aria-labelledby="parts-h" style="padding-top:0">
-  <div class="wrap parts">
-    <div class="reveal">
-      <figure class="parts-photo"><picture><source type="image/webp" srcset="assets/img/klientskaya-640.webp 640w, assets/img/klientskaya.webp 1200w" sizes="(max-width:900px) 100vw, 50vw"><img src="assets/img/klientskaya.jpg" srcset="assets/img/klientskaya-640.jpg 640w, assets/img/klientskaya.jpg 1200w" sizes="(max-width:900px) 100vw, 50vw" alt="Клиентская зона автосервиса «Панорама Мастер»: стойка администратора и витрина с маслами и расходниками" loading="lazy" width="1179" height="879"></picture><figcaption>Клиентская зона и витрина</figcaption></figure>
-    </div>
-    <div class="reveal">
-      <span class="eyebrow">Запчасти</span>
-      <h2 id="parts-h" class="h2">Подберём <span class="accent">запчасти</span> под вашу машину</h2>
-      <p class="lead" style="margin-top:16px">Не нужно искать детали самому и гадать с каталожными номерами — подберём нужную запчасть под вашу ГАЗель, Портер, Транспортер или легковой автомобиль.</p>
-      <ul class="parts-list">
-        <li><span class="ic"><svg><use href="#i-search"/></svg></span><div><b>Подбор по VIN</b><span>Точно под вашу комплектацию и год выпуска.</span></div></li>
-        <li><span class="ic"><svg><use href="#i-scale"/></svg></span><div><b>Варианты на выбор</b><span>Оригинал или проверенный аналог — под ваш бюджет.</span></div></li>
-        <li><span class="ic"><svg><use href="#i-box"/></svg></span><div><b>Сроки и наличие</b><span><span class="ph">[ЗАПОЛНИТЬ: что в наличии, сроки поставки под заказ]</span></span></div></li>
-      </ul>
-      <form class="card-form js-book" data-type="parts" novalidate>
-        <h3 class="h3">Запрос на подбор</h3>
-        <p>Напишите, что нужно, — пришлём варианты и цены.</p>
-        <div class="field-row" style="margin-top:0">
-          <div class="field"><label for="p-car">Марка и модель</label><input id="p-car" name="car" placeholder="Например, ГАЗель Next 2019"></div>
-          <div class="field"><label for="p-vin">VIN (необязательно)</label><input id="p-vin" name="vin" placeholder="17 символов" maxlength="17" autocapitalize="characters" spellcheck="false"></div>
-        </div>
-        <div class="field"><label for="p-part">Какая запчасть нужна</label><input id="p-part" name="part" placeholder="Например, комплект сцепления"></div>
-        <div class="field"><label for="p-phone">Телефон *</label><input id="p-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div>
-        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки ПДн</a></span></label>
-        <button class="btn btn-primary" type="submit"><svg><use href="#i-search"/></svg>Подобрать запчасти</button>
-      </form>
     </div>
   </div>
 </section>
@@ -1159,14 +1161,25 @@ function maskPhone(inp){
 document.addEventListener('input', e=>{ if (e.target.matches('[data-mask]')) maskPhone(e.target); });
 const phoneOk = v => v.replace(/\D/g,'').length===11;
 
-/* ===== Отправка (в проде: POST на /api/lead → Telegram-бот + e-mail) ===== */
+/* ===== Отправка: POST /api/lead → сервис на сервере → MAX (+ почта) ===== */
 function sendLead(type, data){
   if (data.website) return; // honeypot
   delete data.website;
   // служебные поля с префиксом lead_, чтобы не затирать поля формы (type, time и т.п.)
   const payload = {lead_type:type, ...data, lead_utm:getUtm(), lead_page:location.href, lead_sent_at:new Date().toISOString()};
-  console.info('[Заявка]', payload);
   ssSet('leadSent','1');
+  const send = () => fetch('/api/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), keepalive:true})
+    .then(r => { if (!r.ok) throw new Error(r.status); });
+  // одна повторная попытка; если сервер недоступен — честно просим позвонить
+  return send().catch(() => new Promise(r => setTimeout(r, 1500)).then(send)).catch(() => leadFail());
+}
+function leadFail(){
+  if (document.getElementById('leadFail')) return;
+  const d = document.createElement('div');
+  d.id = 'leadFail'; d.setAttribute('role','alert');
+  d.style.cssText = 'position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:200;max-width:min(520px,calc(100% - 24px));padding:14px 18px;border-radius:14px;background:#2a1a12;border:1px solid #E8743B;color:#fff;font-size:15px;box-shadow:0 20px 50px -10px rgba(0,0,0,.6)';
+  d.innerHTML = 'Не удалось отправить заявку — пожалуйста, позвоните: <a href="tel:+79017110411" style="color:#FFB083;font-weight:700">+7 (901) 711-04-11</a>';
+  document.body.appendChild(d); setTimeout(() => d.remove(), 15000);
 }
 function ssGet(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
 function ssSet(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
