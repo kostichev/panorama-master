@@ -171,7 +171,7 @@ a.badge:hover{border-color:var(--orange);color:#fff}
 /* визитка — как карточка на столе */
 .hero-card{position:relative;margin:0;transform:rotate(-2.5deg);transition:transform .4s}
 .hero-card:hover{transform:rotate(0) scale(1.02)}
-.hero-card img{width:100%;height:auto;aspect-ratio:1179/653;border-radius:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08),0 0 80px -20px rgba(232,116,59,.55)}
+.hero-card img{width:100%;height:auto;aspect-ratio:1040/604;object-fit:cover;border-radius:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08),0 0 80px -20px rgba(232,116,59,.55)}
 .hero-card::before{content:"";position:absolute;inset:-14px -14px auto auto;width:120px;height:10px;background:var(--orange);transform:skewX(-40deg);border-radius:2px;z-index:1}
 @media (prefers-reduced-motion:no-preference){.hero-card{animation:cardIn .9s cubic-bezier(.2,.8,.2,1) both .15s}@keyframes cardIn{from{opacity:0;transform:rotate(-8deg) translateY(30px)}}}
 /* полосы-молнии по углам */
@@ -694,7 +694,7 @@ section{position:relative}
         <span class="badge"><span class="ic"><svg><use href="#i-pin"/></svg></span>Соболиха / Железнодорожный</span>
       </div>
     </div>
-    <figure class="hero-card"><picture><source type="image/webp" srcset="assets/img/vizitka-640.webp 640w, assets/img/vizitka.webp 1200w" sizes="(max-width:820px) 100vw, 46vw"><img src="assets/img/vizitka.jpg" srcset="assets/img/vizitka-640.jpg 640w, assets/img/vizitka.jpg 1200w" sizes="(max-width:820px) 100vw, 46vw" alt="Визитка автосервиса «Панорама Мастер»: ремонт ГАЗель, Портер, Транспортер, легковых и коммерческих авто. Телефон +7 (901) 711-04-11, Соболиха, ул. Новослободская, 50, 09:00–21:00 без выходных" width="1179" height="653" fetchpriority="high"></picture></figure>
+    <figure class="hero-card"><picture><source type="image/webp" srcset="assets/img/angar-640.webp 640w, assets/img/angar.webp 1040w" sizes="(max-width:820px) 100vw, 46vw"><img src="assets/img/angar.jpg" srcset="assets/img/angar-640.jpg 640w, assets/img/angar.jpg 1040w" sizes="(max-width:820px) 100vw, 46vw" width="1040" height="604" alt="Автосервис «Панорама Мастер» в Соболихе: ангар с фирменной вывеской, ГАЗель, микроавтобус и легковой автомобиль у ворот" fetchpriority="high"></picture></figure>
   </div>
 </section>
 
