@@ -195,10 +195,11 @@ a.badge:hover{border-color:var(--orange);color:#fff}
 }
 
 /* ============ БЫСТРАЯ ЗАПИСЬ ============ */
-.quick{max-width:580px;margin-bottom:30px}
+.quick{max-width:660px;margin-bottom:30px}
 .quick-row{display:flex;gap:8px;padding:8px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
-.quick-row input{flex:1;min-width:0;min-height:56px;padding:0 16px;border:0;border-radius:12px;background:transparent;color:#fff;font:inherit;font-size:19px;font-weight:600;letter-spacing:.02em}
+.quick-row input{flex:1;min-width:0;min-height:56px;padding:0 16px;border:0;border-radius:12px;background:transparent;color:#fff;font:inherit;font-size:17px;font-weight:600;letter-spacing:.01em}
 .quick-row input::placeholder{color:rgba(255,255,255,.45)}
+.quick-row .qh-name{flex:.7;border-right:1px solid rgba(255,255,255,.12);border-radius:12px 0 0 12px}
 .quick-row input:focus{outline:none;background:rgba(255,255,255,.05)}
 .quick-row:focus-within{border-color:var(--orange)}
 .quick .consent{margin-top:12px}
@@ -211,7 +212,7 @@ a.badge:hover{border-color:var(--orange);color:#fff}
 .quick-done .ok svg{width:26px}
 .quick-done b{display:block;font-size:18px}
 .quick-done span{color:var(--muted);font-size:15px}
-@media (max-width:520px){.quick-row{flex-direction:column}.quick-row .btn{width:100%}}
+@media (max-width:520px){.quick-row{flex-direction:column}.quick-row .btn{width:100%}.quick-row .qh-name{border-right:0;border-bottom:1px solid rgba(255,255,255,.12);border-radius:12px 12px 0 0}}
 
 /* модальное окно записи */
 .modal{border:0;padding:0;background:transparent;color:inherit;width:calc(100% - 32px);max-width:440px;margin:auto}
@@ -225,7 +226,7 @@ a.badge:hover{border-color:var(--orange);color:#fff}
 .chip input:disabled+span{opacity:.32;cursor:not-allowed;text-decoration:line-through}
 .bf-label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:18px 0 2px}
 .bf-label:first-of-type{margin-top:6px}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.field-row{display:grid;grid-template-columns:1fr 1.3fr;gap:10px;margin-top:16px}
 .field-row .field{margin-bottom:6px}
 @media (max-width:520px){.field-row{grid-template-columns:1fr}}
 .status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#7FE3A2;background:rgba(59,209,111,.1);border:1px solid rgba(59,209,111,.3);padding:5px 11px;border-radius:999px}
@@ -663,7 +664,7 @@ section{position:relative}
       <b>+7 (901) 711-04-11</b>
       <small><i class="js-dot"></i><span class="js-status">Ежедневно 09:00–21:00</span></small>
     </a>
-    <a href="#book" class="btn btn-primary" data-book>Записаться</a>
+    <a href="#book" class="btn btn-primary" data-book>Обратный звонок</a>
     <button type="button" class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span></button>
   </div>
 </header>
@@ -683,13 +684,15 @@ section{position:relative}
       <p class="lead">Ремонтируем легковой и лёгкий коммерческий транспорт и подбираем запчасти по VIN — оригинал или проверенный аналог. Машина стоит — бизнес теряет деньги: найдём причину, согласуем цену и&nbsp;быстро вернём машину на линию.</p>
       <form class="quick js-book" id="quickHero" data-type="quick" novalidate>
         <div class="quick-row">
+          <label class="sr" for="qh-name">Имя</label>
+          <input id="qh-name" name="name" autocomplete="given-name" placeholder="Ваше имя" required minlength="2" class="qh-name">
           <label class="sr" for="qh-phone">Телефон</label>
           <input id="qh-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask>
-          <button class="btn btn-primary" type="submit"><svg><use href="#i-cal"/></svg>Записаться</button>
+          <button class="btn btn-primary" type="submit"><svg><use href="#i-phone"/></svg>Перезвоните мне</button>
         </div>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен на обработку <a href="privacy.html" target="_blank" rel="noopener">персональных данных</a></span></label>
-        <p class="quick-note">Оставьте номер — мастер перезвонит и подберёт удобное время. Или звоните сами: <a href="tel:+79017110411" data-goal="click_phone">+7 (901) 711-04-11</a></p>
+        <p class="quick-note">Оставьте имя и телефон — мастер перезвонит и запишет на удобное время. Или звоните сами: <a href="tel:+79017110411" data-goal="click_phone">+7 (901) 711-04-11</a></p>
       </form>
       <div class="hero-parts"><a class="btn btn-ghost" href="#parts" data-goal="parts_cta"><svg><use href="#i-search"/></svg>Подобрать запчасть</a><span>По VIN или марке — пришлём варианты и цены</span></div>
       <div class="badges">
@@ -733,7 +736,7 @@ section{position:relative}
           <div class="field"><label for="p-vin">VIN (необязательно)</label><input id="p-vin" name="vin" placeholder="17 символов" maxlength="17" autocapitalize="characters" spellcheck="false"></div>
         </div>
         <div class="field"><label for="p-part">Какая запчасть нужна</label><input id="p-part" name="part" placeholder="Например, комплект сцепления"></div>
-        <div class="field"><label for="p-phone">Телефон *</label><input id="p-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div>
+        <div class="field-row" style="margin-top:0"><div class="field"><label for="p-name">Имя *</label><input id="p-name" name="name" autocomplete="given-name" placeholder="Как к вам обращаться" required minlength="2"></div><div class="field"><label for="p-phone">Телефон *</label><input id="p-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div></div>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки ПДн</a></span></label>
         <button class="btn btn-primary" type="submit"><svg><use href="#i-search"/></svg>Подобрать запчасти</button>
@@ -785,17 +788,17 @@ section{position:relative}
         <span class="eyebrow">Услуги</span>
         <h2 id="svc-h" class="h2">Что ремонтируем</h2>
       </div>
-      <p class="lead">Нажмите «Записаться» на нужной услуге или «Расчёт» — мастер сориентирует по цене и срокам.</p>
+      <p class="lead">Нажмите «Оставить заявку» на нужной услуге или «Расчёт» — мастер сориентирует по цене и срокам.</p>
     </div>
     <div class="services">
-      <article class="svc reveal"><div class="ic"><svg><use href="#i-diag"/></svg></div><h3 class="h3">Компьютерная диагностика</h3><p>Ошибки ЭБУ, датчики, проводка. Покажем результат и объясним понятным языком.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Диагностика">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Диагностика">Записаться</button></div></div></article>
-      <article class="svc reveal"><div class="ic"><svg><use href="#i-oil"/></svg></div><h3 class="h3">Техобслуживание (ТО)</h3><p>Масло, фильтры, жидкости, свечи, ремни — по регламенту вашей машины.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="ТО">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="ТО">Записаться</button></div></div></article>
-      <article class="svc reveal"><div class="ic"><svg><use href="#i-engine"/></svg></div><h3 class="h3">Ремонт двигателя</h3><p>УМЗ, Cummins, EvoTech, дизели Porter и TDI. От прокладки ГБЦ до капремонта.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Двигатель">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Двигатель">Записаться</button></div></div></article>
-      <article class="svc reveal"><div class="ic"><svg><use href="#i-gearbox"/></svg></div><h3 class="h3">КПП и сцепление</h3><p>Замена сцепления, ремонт коробки, кулисы, полуосей и подшипников.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="КПП и сцепление">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="КПП и сцепление">Записаться</button></div></div></article>
-      <article class="svc reveal"><div class="ic"><svg><use href="#i-susp"/></svg></div><h3 class="h3">Ходовая и подвеска</h3><p>Шкворни, рессоры, амортизаторы, ступицы, рулевое управление.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Ходовая и подвеска">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Ходовая и подвеска">Записаться</button></div></div></article>
-      <article class="svc reveal"><div class="ic"><svg><use href="#i-brake"/></svg></div><h3 class="h3">Тормозная система</h3><p>Колодки, диски, барабаны, суппорты, прокачка и замена жидкости.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Тормозная система">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Тормозная система">Записаться</button></div></div></article>
-      <article class="svc reveal"><div class="ic"><svg><use href="#i-bolt"/></svg></div><h3 class="h3">Автоэлектрика</h3><p>Генератор, стартер, проводка, свет, поиск утечки тока.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Автоэлектрика">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Автоэлектрика">Записаться</button></div></div></article>
-      <article class="svc reveal"><div class="ic"><svg><use href="#i-wrench"/></svg></div><h3 class="h3">Ремонт узлов и агрегатов</h3><p>Редукторы, мосты, раздатки, топливная аппаратура — разберём и восстановим.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Узлы и агрегаты">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Узлы и агрегаты">Записаться</button></div></div></article>
+      <article class="svc reveal"><div class="ic"><svg><use href="#i-diag"/></svg></div><h3 class="h3">Компьютерная диагностика</h3><p>Ошибки ЭБУ, датчики, проводка. Покажем результат и объясним понятным языком.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Диагностика">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Диагностика">Оставить заявку</button></div></div></article>
+      <article class="svc reveal"><div class="ic"><svg><use href="#i-oil"/></svg></div><h3 class="h3">Техобслуживание (ТО)</h3><p>Масло, фильтры, жидкости, свечи, ремни — по регламенту вашей машины.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="ТО">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="ТО">Оставить заявку</button></div></div></article>
+      <article class="svc reveal"><div class="ic"><svg><use href="#i-engine"/></svg></div><h3 class="h3">Ремонт двигателя</h3><p>УМЗ, Cummins, EvoTech, дизели Porter и TDI. От прокладки ГБЦ до капремонта.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Двигатель">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Двигатель">Оставить заявку</button></div></div></article>
+      <article class="svc reveal"><div class="ic"><svg><use href="#i-gearbox"/></svg></div><h3 class="h3">КПП и сцепление</h3><p>Замена сцепления, ремонт коробки, кулисы, полуосей и подшипников.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="КПП и сцепление">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="КПП и сцепление">Оставить заявку</button></div></div></article>
+      <article class="svc reveal"><div class="ic"><svg><use href="#i-susp"/></svg></div><h3 class="h3">Ходовая и подвеска</h3><p>Шкворни, рессоры, амортизаторы, ступицы, рулевое управление.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Ходовая и подвеска">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Ходовая и подвеска">Оставить заявку</button></div></div></article>
+      <article class="svc reveal"><div class="ic"><svg><use href="#i-brake"/></svg></div><h3 class="h3">Тормозная система</h3><p>Колодки, диски, барабаны, суппорты, прокачка и замена жидкости.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Тормозная система">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Тормозная система">Оставить заявку</button></div></div></article>
+      <article class="svc reveal"><div class="ic"><svg><use href="#i-bolt"/></svg></div><h3 class="h3">Автоэлектрика</h3><p>Генератор, стартер, проводка, свет, поиск утечки тока.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Автоэлектрика">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Автоэлектрика">Оставить заявку</button></div></div></article>
+      <article class="svc reveal"><div class="ic"><svg><use href="#i-wrench"/></svg></div><h3 class="h3">Ремонт узлов и агрегатов</h3><p>Редукторы, мосты, раздатки, топливная аппаратура — разберём и восстановим.</p><div class="foot"><span class="price">от <span class="ph">[ЗАПОЛНИТЬ] ₽</span></span><div class="svc-actions"><a class="more" href="#quiz" data-calc="Узлы и агрегаты">Расчёт<svg><use href="#i-arrow"/></svg></a><button type="button" class="btn btn-primary btn-sm" data-book data-service="Узлы и агрегаты">Оставить заявку</button></div></div></article>
     </div>
   </div>
 </section>
@@ -926,7 +929,7 @@ section{position:relative}
       <p>Пришлём условия и цены для вашего парка.</p>
       <div class="field"><label for="b-company">Компания</label><input id="b-company" name="company" placeholder="ООО «Ваша компания»"></div>
       <div class="field"><label for="b-count">Сколько машин в парке</label><input id="b-count" name="count" inputmode="numeric" placeholder="Например, 12"></div>
-      <div class="field"><label for="b-phone">Телефон *</label><input id="b-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required data-mask></div>
+      <div class="field-row" style="margin-top:0"><div class="field"><label for="b-name">Имя *</label><input id="b-name" name="name" autocomplete="given-name" placeholder="Как к вам обращаться" required minlength="2"></div><div class="field"><label for="b-phone">Телефон *</label><input id="b-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required data-mask></div></div>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label class="consent"><input type="checkbox" required> <span>Согласен с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки ПДн</a></span></label>
       <button class="btn btn-primary" type="submit">Получить условия<svg><use href="#i-arrow"/></svg></button>
@@ -971,7 +974,7 @@ section{position:relative}
       <article class="rev"><div class="stars">★★★★★</div><p><span class="ph">[ЗАПОЛНИТЬ: реальный отзыв с 2ГИС]</span></p><div class="who"><span class="av">?</span>Имя клиента · Porter</div></article>
       <article class="rev"><div class="stars">★★★★★</div><p><span class="ph">[ЗАПОЛНИТЬ: отзыв автопарка / B2B]</span></p><div class="who"><span class="av">?</span>Компания · 8 машин</div></article>
     </div>
-    <div class="rev-cta"><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://yandex.ru/maps/?text=%D0%90%D0%B2%D1%82%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%20%D0%9F%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0%20%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%20%D0%A1%D0%BE%D0%B1%D0%BE%D0%BB%D0%B8%D1%85%D0%B0">Отзывы на Яндекс Картах</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://2gis.ru/balashiha/search/%D0%9F%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0%20%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80">Отзывы в 2ГИС</a><button type="button" class="btn btn-primary" data-book>Записаться на ремонт</button></div>
+    <div class="rev-cta"><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://yandex.ru/maps/?text=%D0%90%D0%B2%D1%82%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%20%D0%9F%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0%20%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80%20%D0%A1%D0%BE%D0%B1%D0%BE%D0%BB%D0%B8%D1%85%D0%B0">Отзывы на Яндекс Картах</a><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://2gis.ru/balashiha/search/%D0%9F%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0%20%D0%9C%D0%B0%D1%81%D1%82%D0%B5%D1%80">Отзывы в 2ГИС</a><button type="button" class="btn btn-primary" data-book>Оставить заявку</button></div>
   </div>
 </section>
 
@@ -1029,7 +1032,7 @@ section{position:relative}
     <div class="f-top">
       <a href="#top" class="logo" aria-label="Панорама Мастер"><svg viewBox="0 0 220 96" style="height:64px"><path d="M14 10h192l-8 54H22z" fill="#1A1919" stroke="#E8743B" stroke-width="3"/><text x="110" y="30" text-anchor="middle" font-family="Exo 2,Arial Black" font-style="italic" font-weight="900" font-size="18" fill="#fff">ПАНОРАМА</text><text x="110" y="58" text-anchor="middle" font-family="Exo 2,Arial Black" font-style="italic" font-weight="900" font-size="31" fill="url(#lg-m)">МАСТЕР</text><use href="#i-gear" x="80" y="62" width="60" height="34" color="#E8743B"/></svg></a>
       <p style="color:var(--muted);max-width:44ch">Ремонт всех легковых и легкого коммерческого транспорта. Газель • Портер • Транспортер.</p>
-      <a href="#book" class="btn btn-primary" data-book>Записаться на ремонт</a>
+      <a href="#book" class="btn btn-primary" data-book>Оставить заявку</a>
     </div>
     <div class="f-info">
       <div><span class="c-ic"><svg><use href="#i-phone"/></svg></span><div><small>Телефон:</small><b class="big"><a href="tel:+79017110411" data-goal="click_phone">+7 (901) 711-04-11</a></b></div></div>
@@ -1047,51 +1050,28 @@ section{position:relative}
 <nav class="tabbar" aria-label="Быстрые действия">
   <a href="tel:+79017110411" data-goal="click_phone"><svg><use href="#i-phone"/></svg>Звонок</a>
   <a href="https://wa.me/79017110411" target="_blank" rel="noopener" data-goal="click_whatsapp"><svg><use href="#i-wa"/></svg>WhatsApp</a>
-  <a href="#book" class="main" data-book><svg><use href="#i-cal"/></svg>Запись</a>
+  <a href="#book" class="main" data-book><svg><use href="#i-phone"/></svg>Заявка</a>
   <a href="https://t.me/+79017110411" target="_blank" rel="noopener" data-goal="click_telegram"><svg><use href="#i-tg"/></svg>Telegram</a>
   <a href="https://yandex.ru/maps/?rtext=~%D0%91%D0%B0%D0%BB%D0%B0%D1%88%D0%B8%D1%85%D0%B0%2C%20%D0%A1%D0%BE%D0%B1%D0%BE%D0%BB%D0%B8%D1%85%D0%B0%2C%20%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%BB%D0%BE%D0%B1%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%2050&rtt=auto" data-goal="click_route"><svg><use href="#i-route"/></svg>Маршрут</a>
 </nav>
 
-<dialog class="modal" id="bookModal" aria-labelledby="book-h" data-mode="book">
-  <form class="card-form js-book" novalidate>
+<dialog class="modal" id="bookModal" aria-labelledby="book-h" data-mode="callback">
+  <form class="card-form js-book" data-type="callback" novalidate>
     <button type="button" class="x" aria-label="Закрыть" data-close>×</button>
     <div class="book-head">
       <span class="status js-status-pill">Ежедневно 09:00–21:00</span>
-      <h3 class="h3" id="book-h">Запись на ремонт</h3>
-      <p id="book-sub" style="color:var(--dim);font-size:15px">Выберите услугу и удобное время — мастер перезвонит и подтвердит запись.</p>
-    </div>
-    <div data-only="book">
-      <div class="bf-label">Услуга <span style="text-transform:none;letter-spacing:0;font-weight:500">— необязательно</span></div>
-      <div class="chips" id="bookServices"></div>
-      <div class="bf-label">Когда удобно приехать</div>
-      <div class="chips" id="bookDays">
-        <label class="chip"><input type="radio" name="day" value="Сегодня"><span>Сегодня</span></label>
-        <label class="chip"><input type="radio" name="day" value="Завтра"><span>Завтра</span></label>
-        <label class="chip"><input type="radio" name="day" value="Другой день"><span>Другой день</span></label>
-      </div>
-      <div class="chips" id="bookSlots">
-        <label class="chip"><input type="radio" name="time" value="09–12" data-end="12"><span>09–12</span></label>
-        <label class="chip"><input type="radio" name="time" value="12–15" data-end="15"><span>12–15</span></label>
-        <label class="chip"><input type="radio" name="time" value="15–18" data-end="18"><span>15–18</span></label>
-        <label class="chip"><input type="radio" name="time" value="18–21" data-end="21"><span>18–21</span></label>
-      </div>
+      <h3 class="h3" id="book-h">Перезвоним вам</h3>
+      <p id="book-sub" style="color:var(--dim);font-size:15px">Оставьте имя и телефон — мастер перезвонит, ответит на вопросы и запишет на удобное время.</p>
     </div>
     <div class="field-row">
+      <div class="field"><label for="m-name">Имя *</label><input id="m-name" name="name" autocomplete="given-name" placeholder="Как к вам обращаться" required minlength="2"></div>
       <div class="field"><label for="m-phone">Телефон *</label><input id="m-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div>
-      <div class="field"><label for="m-name">Имя</label><input id="m-name" name="name" autocomplete="given-name" placeholder="Как к вам обращаться"></div>
     </div>
-    <div data-only="book">
-      <div class="bf-label" style="margin-top:6px">Как удобнее связаться</div>
-      <div class="chips">
-        <label class="chip"><input type="radio" name="contact" value="Звонок" checked><span>Звонок</span></label>
-        <label class="chip"><input type="radio" name="contact" value="WhatsApp"><span>WhatsApp</span></label>
-        <label class="chip"><input type="radio" name="contact" value="Telegram"><span>Telegram</span></label>
-      </div>
-    </div>
+    <input type="hidden" name="service" value="">
     <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="consent" style="margin-top:14px"><input type="checkbox" name="pd" required> <span>Согласен с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки ПДн</a></span></label>
-    <button class="btn btn-primary" type="submit" id="book-btn"><svg><use href="#i-cal"/></svg><span>Записаться</span></button>
-    <p class="bf-note">Перезваниваем в рабочее время за <span class="ph">[N] мин</span> · Или звоните: <a href="tel:+79017110411" class="accent" data-goal="click_phone">+7 (901) 711-04-11</a></p>
+    <button class="btn btn-primary" type="submit" id="book-btn"><svg><use href="#i-phone"/></svg><span>Перезвоните мне</span></button>
+    <p class="bf-note">Перезваниваем в рабочее время за <span class="ph">[N] мин</span> · Или звоните сами: <a href="tel:+79017110411" class="accent" data-goal="click_phone">+7 (901) 711-04-11</a></p>
   </form>
 </dialog>
 
@@ -1108,12 +1088,12 @@ section{position:relative}
     <button type="button" class="x" aria-label="Закрыть" data-close>×</button>
     <span class="eyebrow" style="margin-bottom:8px">Минутку</span>
     <h3 class="h3" id="exit-h">Остались вопросы по машине?</h3>
-    <p>Оставьте номер — мастер бесплатно проконсультирует и сориентирует по цене и срокам ремонта.</p>
+    <p>Оставьте имя и телефон — мастер бесплатно проконсультирует и сориентирует по цене и срокам ремонта.</p>
     <p class="offer"><span class="ph">[ЗАПОЛНИТЬ: оффер, например скидка на первую диагностику]</span></p>
-    <div class="field"><label for="x-phone">Телефон *</label><input id="x-phone" autofocus name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div>
+    <div class="field-row"><div class="field"><label for="x-name">Имя *</label><input id="x-name" name="name" autocomplete="given-name" placeholder="Как к вам обращаться" required minlength="2"></div><div class="field"><label for="x-phone">Телефон *</label><input id="x-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-mask></div></div>
     <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="consent"><input type="checkbox" name="pd" required> <span>Согласен с <a href="privacy.html" target="_blank" rel="noopener">политикой обработки ПДн</a></span></label>
-    <button class="btn btn-primary" type="submit"><svg><use href="#i-phone"/></svg>Жду звонка</button>
+    <button class="btn btn-primary" type="submit"><svg><use href="#i-phone"/></svg>Перезвоните мне</button>
   </form>
 </dialog>
 
@@ -1317,38 +1297,19 @@ const quiz = (function(){
 const bookModal = document.getElementById('bookModal');
 const bookForm = bookModal.querySelector('form');
 const BOOK_HTML = bookForm.innerHTML;
-function fillServices(){
-  bookForm.querySelector('#bookServices').innerHTML = [...Object.keys(WORKS), 'Подбор запчастей'].map(w=>`<label class="chip"><input type="radio" name="service" value="${esc(w)}"><span>${esc(w==='Не знаю'?'Не знаю':w)}</span></label>`).join('');
-}
-function updateSlots(){
-  const t = mskHour(), days = bookForm.querySelector('#bookDays'); if (!days) return;
-  const today = days.querySelector('[value="Сегодня"]');
-  today.disabled = t >= 20;                      // после 20:00 на сегодня не записываем
-  if (today.disabled && today.checked){ today.checked=false; }
-  if (!days.querySelector('input:checked')) days.querySelector(today.disabled?'[value="Завтра"]':'[value="Сегодня"]').checked = true;
-  const isToday = today.checked;
-  bookForm.querySelectorAll('#bookSlots input').forEach(r=>{ r.disabled = isToday && +r.dataset.end <= t + 1; if (r.disabled) r.checked=false; });
-}
-function openBook({mode='book', service=''}={}){
+function openBook({service=''}={}){
   if (bookForm.dataset.done){ bookForm.innerHTML = BOOK_HTML; delete bookForm.dataset.done; }
-  fillServices(); updateStatus();
-  bookModal.dataset.mode = mode;
-  const cb = mode==='callback';
-  bookForm.querySelector('#book-h').textContent = cb ? 'Перезвоним вам' : 'Запись на ремонт';
-  bookForm.querySelector('#book-sub').textContent = cb ? 'Оставьте номер — мастер перезвонит, ответит на вопросы и сориентирует по цене.' : 'Выберите услугу и удобное время — мастер перезвонит и подтвердит запись.';
-  bookForm.querySelector('#book-btn span').textContent = cb ? 'Жду звонка' : 'Записаться';
-  if (service){ const r = bookForm.querySelector(`input[name=service][value="${service}"]`); if (r) r.checked = true; }
-  updateSlots();
+  updateStatus();
+  bookForm.querySelector('[name=service]').value = service;   // с какой услуги нажали — мастеру для контекста
   bookModal.showModal();
-  goal(cb ? 'callback_open' : 'book_open');
-  if (cb || service) setTimeout(()=>bookForm.querySelector('[name=phone]').focus(), 60);
+  goal('callback_open');
+  setTimeout(()=>bookForm.querySelector('[name=name]').focus(), 60);
 }
-bookModal.addEventListener('change', e=>{ if (e.target.name==='day') updateSlots(); });
 
 document.addEventListener('click', e=>{
   const b = e.target.closest('[data-book]');
-  if (b){ e.preventDefault(); openBook({mode:'book', service:b.dataset.service||''}); return; }
-  if (e.target.closest('[data-callback]')){ e.preventDefault(); hideNudge(); openBook({mode:'callback'}); return; }
+  if (b){ e.preventDefault(); openBook({service:b.dataset.service||''}); return; }
+  if (e.target.closest('[data-callback]')){ e.preventDefault(); hideNudge(); openBook(); return; }
   const c = e.target.closest('[data-close]'); if (c) c.closest('dialog').close();
 });
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click', e=>{ if (e.target===d) d.close(); }));
@@ -1358,15 +1319,17 @@ document.addEventListener('submit', e=>{
   const f = e.target.closest('.js-book'); if (!f) return;
   e.preventDefault();
   const ph = f.querySelector('[name=phone]'), pd = f.querySelector('[name=pd]');
+  const nm = f.querySelector('[name=name]');
+  if (nm && nm.value.trim().length < 2){ nm.focus(); nm.setCustomValidity('Введите имя'); nm.reportValidity(); nm.setCustomValidity(''); return; }
   if (!phoneOk(ph.value)){ ph.focus(); ph.setCustomValidity('Введите номер телефона'); ph.reportValidity(); ph.setCustomValidity(''); return; }
   if (!pd.checked){ pd.reportValidity(); return; }
-  const type = f.dataset.type || bookModal.dataset.mode;
+  const type = f.dataset.type || 'callback';
   const data = Object.fromEntries(new FormData(f)); delete data.pd;
   sendLead(type, data);
   goal(type+'_submit'); goal('form_submit');
-  const rows = [data.service && `<li><b>Услуга:</b>${esc(data.service)}</li>`, data.car && `<li><b>Автомобиль:</b>${esc(data.car)}${data.vin?' · VIN '+esc(data.vin):''}</li>`, data.part && `<li><b>Запчасть:</b>${esc(data.part)}</li>`, data.day && type==='book' && `<li><b>Когда:</b>${esc(data.day)}${data.time?', '+esc(data.time):''}</li>`, `<li><b>Телефон:</b>${esc(data.phone)}${data.contact&&data.contact!=='Звонок'?' · '+esc(data.contact):''}</li>`].filter(Boolean).join('');
-  const title = type==='book' ? 'Вы записаны!' : type==='parts' ? 'Запрос на подбор принят!' : 'Заявка принята!';
-  const note = type==='book' ? `${callbackEta()} Мастер подтвердит время записи.` : type==='parts' ? callbackEta().replace('перезвонит','перезвонит с вариантами запчастей') : callbackEta();
+  const rows = [data.name && `<li><b>Имя:</b>${esc(data.name)}</li>`, data.car && `<li><b>Автомобиль:</b>${esc(data.car)}${data.vin?' · VIN '+esc(data.vin):''}</li>`, data.part && `<li><b>Запчасть:</b>${esc(data.part)}</li>`, data.day && type==='book' && `<li><b>Когда:</b>${esc(data.day)}${data.time?', '+esc(data.time):''}</li>`, `<li><b>Телефон:</b>${esc(data.phone)}${data.contact&&data.contact!=='Звонок'?' · '+esc(data.contact):''}</li>`].filter(Boolean).join('');
+  const title = type==='parts' ? 'Запрос на подбор принят!' : 'Заявка принята!';
+  const note = type==='parts' ? callbackEta().replace('перезвонит','перезвонит с вариантами запчастей') : callbackEta();
   if (f.closest('dialog')){
     f.dataset.done = '1';
     f.innerHTML = `<button type="button" class="x" aria-label="Закрыть" data-close>×</button><div class="done-box"><div class="ok">${OK_ICON}</div><h3 class="h3">${title}</h3><ul>${rows}</ul><p style="color:var(--muted)">${note}</p><button type="button" class="btn btn-primary" data-close style="margin-top:18px">Готово</button></div>`;
@@ -1394,6 +1357,8 @@ nudge.querySelector('[data-nudge-close]').addEventListener('click', hideNudge);
 document.getElementById('b2bForm').addEventListener('submit', e=>{
   e.preventDefault();
   const f = e.target, ph = f.querySelector('[name=phone]'), pd = f.querySelector('[type=checkbox]');
+  const nm = f.querySelector('[name=name]');
+  if (nm.value.trim().length < 2){ nm.setCustomValidity('Введите имя'); nm.reportValidity(); nm.setCustomValidity(''); return; }
   if (!phoneOk(ph.value)){ ph.setCustomValidity('Введите телефон'); ph.reportValidity(); ph.setCustomValidity(''); return; }
   if (!pd.checked){ pd.reportValidity(); return; }
   const fd = new FormData(f);
