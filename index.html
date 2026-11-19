@@ -713,6 +713,7 @@ section{position:relative}
 .sheet.sheet-alt{background:var(--bg-2)}
 .sheet-cover{position:absolute;inset:0;background:#050505;opacity:0;visibility:hidden;pointer-events:none;z-index:30;border-radius:inherit;will-change:opacity}
 .hero.sheet-base{position:sticky}
+.sheet-gap{height:0;pointer-events:none}
 html{overflow-anchor:none}
 @media (max-width:820px){.sheet{border-radius:24px 24px 0 0}}
 @media (prefers-reduced-motion:reduce){.sheet>.wrap{transform:none}.sheet-cover{display:none}}
@@ -1664,12 +1665,26 @@ function docTop(el){
   });
   { const c = document.createElement('div'); c.className = 'sheet-cover'; c.setAttribute('aria-hidden','true'); hero.appendChild(c); }
   const all = [hero, ...sheets];
+  // «пауза»: после того как раздел показан целиком, он стоит на месте, пока прокручивается пустой промежуток,
+  // и только потом наезжает следующий — низ раздела (кнопки, списки) не закрывается сразу
+  const gaps = all.slice(0, -1).map(s => { const g = document.createElement('div'); g.className = 'sheet-gap'; g.setAttribute('aria-hidden','true'); s.after(g); return g; });
   // на телефоне высота экрана «прыгает», когда прячется адресная строка, — берём её только при смене ширины
   const touch = matchMedia('(pointer:coarse)').matches;
   let vw = innerWidth, vh = innerHeight;
   function layout(){
     if (!touch || innerWidth !== vw){ vw = innerWidth; vh = innerHeight; }
-    all.forEach(s => { s.style.top = Math.min(0, vh - s.offsetHeight) + 'px'; });
+    const dwell = Math.round(vh * (touch ? 0.32 : 0.4));
+    all.forEach((s, i) => {
+      const h = s.offsetHeight;
+      s.style.top = Math.min(0, vh - h) + 'px';
+      if (!gaps[i]) return;
+      const g = gaps[i]; g.style.height = dwell + 'px';
+      // у короткого раздела (ниже экрана) промежуток закрашен его фоном и лежит на его уровне — иначе под ним мелькнул бы предыдущий
+      const short = h < vh - 2;
+      g.style.background = short ? getComputedStyle(s).backgroundColor : '';
+      g.style.position = short ? 'relative' : '';
+      g.style.zIndex = short ? (s.style.zIndex || '1') : '';
+    });
   }
   // затемнение уходящего блока: сначала все замеры, потом запись — и только если значение изменилось
   const covers = all.map(s => s.querySelector(':scope > .sheet-cover'));
