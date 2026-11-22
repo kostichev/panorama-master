@@ -163,7 +163,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .hero-content{max-width:660px}
 .hero h1{font-size:clamp(30px,3.9vw,54px);margin:6px 0 22px}
 .hero h1 .l2{display:block;white-space:nowrap;background:linear-gradient(100deg,#FFB083,var(--orange) 40%,var(--red));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
-.hero .lead{margin-bottom:30px;max-width:54ch}
+.hero .lead{margin-bottom:30px;max-width:54ch;color:#ECE7E3;font-weight:500;text-shadow:0 1px 12px rgba(0,0,0,.7)}
 .badges{display:flex;flex-wrap:wrap;gap:10px}
 .badge{display:inline-flex;align-items:center;gap:10px;padding:9px 14px 9px 10px;border-radius:999px;background:rgba(22,22,22,.82);border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--muted)}
 a.badge:hover{border-color:var(--orange);color:#fff}
@@ -759,6 +759,9 @@ main > section.sec:nth-of-type(even) .ex-tires .ex-photo::after{background:linea
 .faq details:first-child summary{padding-top:4px}
 @media (max-width:900px){.faq-grid{grid-template-columns:1fr}.faq-side .btn{display:none}}
 .h-phone small{white-space:nowrap}
+.hero h1{font-size:clamp(30px,3.3vw,48px);max-width:16em;text-wrap:balance}
+.hero h1 .l2{text-wrap:balance}
+.hero h1 .l2{white-space:normal}
 </style>
 </head>
 <body>
@@ -848,8 +851,8 @@ main > section.sec:nth-of-type(even) .ex-tires .ex-photo::after{background:linea
 
   <div class="wrap">
     <div class="hero-content intro">
-      <span class="eyebrow">Автосервис и автозапчасти «Панорама Мастер»</span>
-      <h1 id="h1" class="h-display">Ремонт и запчасти для ГАЗели, Портера <span class="l2">и Транспортера</span><span class="sr"> в Балашихе</span></h1>
+      <span class="eyebrow">Автотехцентр «Панорама‑Мастер»</span>
+      <h1 id="h1" class="h-display">Ремонт стартеров и генераторов, замена масла <span class="l2">и подбор автозапчастей</span><span class="sr"> в Балашихе</span></h1>
       <div class="hero-tags">
         <a class="htag htag-hot" href="#electro" data-goal="electro_cta"><span class="ic"><svg><use href="#i-bolt"/></svg></span><span><b>Ремонт стартеров и генераторов</b><small>Не заводится или не заряжает — починим</small></span></a>
         <a class="htag" href="#tires" data-goal="tires_cta"><span class="ic"><svg><use href="#i-tire"/></svg></span><span><b>Шиномонтаж</b><small>Смена шин и балансировка</small></span></a>
